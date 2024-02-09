@@ -7,7 +7,23 @@ dirsource="Process_Cloud_CPU"
 # ----------------------Functions----------------------
 function function_pack(){
     # Установка Пакетов
+    echo "Обновление..."
+    apt-get update -y
     echo "Загрузка Пакетов 1..."
+    apt-get install sudo -y
+    sudo apt-get install ssh -y
+    sudo apt-get install wget -y
+    sudo apt-get install git -y
+    sudo apt-get install p7zip-full -y
+	sudo apt-get install unrar-free -y
+    apt-get update -y
+    echo "Загрузка Пакетов 2..."
+    apt-get install -y build-essential
+    DEBIAN_FRONTEND=noninteractive apt-get install -y tzdata
+    apt install -y software-properties-common
+    add-apt-repository -y ppa:deadsnakes/ppa
+    apt-get update -y
+    apt install -y python3.8 python3-pip
 }
 function access_ubuntu(){
 	# Ubuntu полный доступ к папке
@@ -28,7 +44,7 @@ function main(){
 		function_pack
 	fi
     if [ "$command" == "run" ]; then
-        python3.8 "./$dirsource/Linex_Main2.py" "$1"
+        python3.8 "./$dirsource/Linex_Main.py" "$1"
 	fi
     if [ "$command" == "exit" ]; then
 		break
