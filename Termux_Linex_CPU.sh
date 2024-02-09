@@ -29,6 +29,7 @@ function function_pack(){
     python3.8 --version
     curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
     sudo python3.8 get-pip.py
+    rm -r get-pip.py
     pip install --upgrade pip
     python3.8 -m pip install requests
     python3.8 -m pip install alive-progress
