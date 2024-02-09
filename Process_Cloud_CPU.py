@@ -45,5 +45,5 @@ class Process_Cloud(object):
             id_disk=masss[0]
             url_down=f"https://drive.google.com/uc?export=download&confirm=no_antivirus&id={id_disk}"
         return url_down
-    def Pause():
+    def Pause(self):
         input("-------------------Enter-------------------")
