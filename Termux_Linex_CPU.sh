@@ -2,20 +2,28 @@ versionscript=1.012
 echo "Установка и Работа Process_Cloud CPU SV (Щ.В) (v $versionscript)"
 distributivelinex=$(lsb_release -is)
 numberversionlinex=$(lsb_release -rs)
-dirsource="Process_CloudSV"
+dirsource="Process_Cloud_CPU"
 
 # ----------------------Functions----------------------
+function function_pack10(){
+
+}
+function access_ubuntu(){
+	# Ubuntu полный доступ к папке
+	nameuser=$USER
+	chmod -R 777 "$dirsource/"
+}
 # -----------------------------------------------------
 
 function main(){
     # Основное Меню
-    echo "Конвентация *.cap в *.hc22000 по адресу https://hashcat.net/cap2hashcat/"
     echo "Команда: pack (Установка необходимых пакетов)"
     echo "Команда: run (Запуск Скрипта)"
     echo "Команда: exit (Выход)"
     echo "Введите Команду:"
     read command
     if [ "$command" == "pack" ]; then
+        access_ubuntu
 		function_pack10
 	fi
     if [ "$command" == "run" ]; then
