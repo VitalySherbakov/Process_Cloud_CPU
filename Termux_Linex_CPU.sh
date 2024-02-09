@@ -12,6 +12,7 @@ function function_pack(){
     echo "Загрузка Пакетов 1..."
     apt-get install sudo -y
     sudo apt-get install ssh -y
+    sudo apt-get install curl -y
     sudo apt-get install wget -y
     sudo apt-get install git -y
     sudo apt-get install p7zip-full -y
@@ -24,6 +25,17 @@ function function_pack(){
     add-apt-repository -y ppa:deadsnakes/ppa
     apt-get update -y
     apt install -y python3.8 python3-pip
+    echo "Загрузка Пакетов 3..."
+    python3.8 --version
+    curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+    sudo python3.8 get-pip.py
+    pip install --upgrade pip
+    python3.8 -m pip install requests
+    python3.8 -m pip install alive-progress
+    python3.8 -m pip install tqdm
+    python3.8 -m pip install py7zr
+    python3.8 -m pip install rarfile
+    echo "-----Конец Установки Пакетов-----"
 }
 function access_ubuntu(){
 	# Ubuntu полный доступ к папке
