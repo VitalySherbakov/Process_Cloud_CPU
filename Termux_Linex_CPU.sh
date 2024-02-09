@@ -5,8 +5,9 @@ numberversionlinex=$(lsb_release -rs)
 dirsource="Process_Cloud_CPU"
 
 # ----------------------Functions----------------------
-function function_pack10(){
-
+function function_pack(){
+    # Установка Пакетов
+    echo "Загрузка Пакетов 1..."
 }
 function access_ubuntu(){
 	# Ubuntu полный доступ к папке
@@ -24,7 +25,7 @@ function main(){
     read command
     if [ "$command" == "pack" ]; then
         access_ubuntu
-		function_pack10
+		function_pack
 	fi
     if [ "$command" == "run" ]; then
         python3.8 "./$dirsource/Linex_Main2.py" "$1"
