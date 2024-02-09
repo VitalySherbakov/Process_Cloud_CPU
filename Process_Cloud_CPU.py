@@ -9,9 +9,9 @@ dir_path = os.path.dirname(os.path.realpath(__file__))
 
 class Process_Cloud(object):
     """Настройки Приложения"""
-    settingfile=f"{dir_path}/SettingApp.json"
+    SettingFile=f"{dir_path}/SettingApp.json"
     """Адресс Настроек"""
-    settingdicts=f"{dir_path}/DictsDownload.json"
+    SettingDicts=f"{dir_path}/DictsDownload.json"
     """Словари"""
     def __init__(self, encod="utf-8"):
         pass
@@ -25,13 +25,25 @@ class Process_Cloud(object):
             except Exception as ex:
                 print(f"ERROR FILE: {ex}!")
         return text
-    def ReadJson(self, file: str, encod="utf-8"):
+    def ReadSetting(self, file: str, encod="utf-8"):
         """Чтение Json"""
         data=None
         if os.path.exists(file):
             try:
                 with open(file, 'r', encoding=encod) as f:
                     data = json.load(f)
+            except Exception as ex:
+                print(f"ERROR DICTS: {ex}!")
+        else:
+            print(f"ERROR: Нету {file} Файла!")
+        return data
+    def ReadDicts(self, file: str, encod="utf-8"):
+        """Чтение Json"""
+        data=None
+        if os.path.exists(file):
+            try:
+                with open(file, 'r', encoding=encod) as f:
+                    data = json.loads(f)
             except Exception as ex:
                 print(f"ERROR DICTS: {ex}!")
         else:

@@ -11,6 +11,10 @@ print(f"Платформа: {platform_name}")
 print(f"Папка: {dir_path}")
 
 while True:
+    Settings=app.ReadSetting(app.SettingFile)
+    Dict_Download = app.ReadDicts(app.SettingDicts)
+    print(app.SettingDicts)
+    print(Dict_Download)
     current_date = datetime.datetime.now()
     current_date_str = current_date.strftime("%d.%m.%Y %H:%M:%S")
     print(f"-------------------------{current_date_str}--------------------------")
@@ -18,7 +22,14 @@ while True:
     print(f"2) Работа с CAP файлами Расшыфровка")
     result = app.InputWhile("Номер Выбора: ")
     if result=="1":
-        pass 
+        print("------------Словари-------------")
+        for li in Dict_Download:
+            name=li["Name"]
+            files = li["Files"]
+            print(f"1) Словарь {name} Количество {len(files)}")
+        print(f"1) Скачать Словарь и Распоковать")
+        print(f"2) Работа с CAP файлами Расшыфровка") 
+        print(f"3) Работа с CAP файлами Расшыфровка") 
     if result=="2":
         pass
     elif result!="1" and result!="2":
