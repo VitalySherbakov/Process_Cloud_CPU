@@ -45,5 +45,15 @@ class Process_Cloud(object):
             id_disk=masss[0]
             url_down=f"https://drive.google.com/uc?export=download&confirm=no_antivirus&id={id_disk}"
         return url_down
+    def InputWhile(self, text: str):
+        """Ввод Данных Цыкловый"""
+        Flag,Res=True,""
+        while Flag:
+            Res=input(text)
+            if not Res.strip():
+                print("Пустое Значение!")
+            else:
+                Flag=False
+        return Res
     def Pause(self):
         input("-------------------Enter-------------------")

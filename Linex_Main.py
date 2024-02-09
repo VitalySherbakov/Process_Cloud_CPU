@@ -14,4 +14,13 @@ while True:
     current_date = datetime.datetime.now()
     current_date_str = current_date.strftime("%d.%m.%Y %H:%M:%S")
     print(f"-------------------------{current_date_str}--------------------------")
+    print(f"1) Работа с Словарями")
+    print(f"2) Работа с CAP файлами Расшыфровка")
+    result = app.InputWhile("Номер Выбора: ")
+    if result=="1":
+        pass 
+    if result=="2":
+        pass
+    elif result!="1" and result!="2":
+        print(f"Не Верная {result} Команда!")
     app.Pause()
