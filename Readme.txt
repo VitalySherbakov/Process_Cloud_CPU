@@ -20,6 +20,7 @@ bash ./Process_Cloud_CPU/Termux_Linex_CPU.sh
     "Dir_Dicts": "Dicts",
     "Passwords": "Passs",
     "FileDicts":"DictsDownload.json",
+    "Type_URLS": "GoogleDisk",
     "Arhivator": "RAR"
 }
 
@@ -28,4 +29,5 @@ Dir_Dicts_Downloads - Файлы загрузки словарей
 Dir_Dicts - Уже готовые словари распакованые
 Passwords - Файлы Паролей
 FileDicts - Файл Json ссылок и файлов словарей
+Type_URLS - Тип Ссылок GoogleDisk/DirectLink  (Гугл Диск/Прямая Ссылка) 
 Arhivator - Использование Архиватора

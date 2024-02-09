@@ -5,6 +5,20 @@ numberversionlinex=$(lsb_release -rs)
 dirsource="Process_Cloud_CPU"
 
 # ----------------------Functions----------------------
+function function_install_cpu(){
+	# Установка CPU
+	apt-get update -y
+	git clone https://github.com/aircrack-ng/aircrack-ng
+    cd aircrack-ng
+    bash "./autogen.sh"
+    "./configure"
+    make
+    sudo make install
+	apt-get update -y
+    apt install aircrack-ng -y
+	aircrack-ng --help
+	cd ..
+}
 function function_pack(){
     # Установка Пакетов
     echo "Обновление..."
@@ -15,6 +29,8 @@ function function_pack(){
     sudo apt-get install curl -y
     sudo apt-get install wget -y
     sudo apt-get install git -y
+    sudo apt-get install rar -y
+    sudo apt-get install zip -y
     sudo apt-get install p7zip-full -y
 	sudo apt-get install unrar-free -y
     apt-get update -y
@@ -36,6 +52,8 @@ function function_pack(){
     python3.8 -m pip install tqdm
     python3.8 -m pip install py7zr
     python3.8 -m pip install rarfile
+    echo "Загрузка Пакетов 4..."
+    function_install_cpu
     echo "-----Конец Установки Пакетов-----"
 }
 function access_ubuntu(){

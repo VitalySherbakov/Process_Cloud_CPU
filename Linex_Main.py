@@ -10,27 +10,86 @@ platform_name=sys.argv[1] #Получить Платформу для досту
 print(f"Платформа: {platform_name}")
 print(f"Папка: {dir_path}")
 
+dict_arhivator={"7z": "7z", "zip": "ZIP", "rar": "RAR"}
+# Переменные
+dict_num=0 # Количество
+# Процес
 while True:
-    Settings=app.ReadSetting(app.SettingFile)
-    Dict_Download = app.ReadDicts(app.SettingDicts)
-    print(app.SettingDicts)
-    print(Dict_Download)
+    Settings=app.ReadJson(app.SettingFile)
+    # Создание Папок
+    app.CreateDir(f"{dir_path}\\{Settings['Dir_CAPS']}")
+    app.CreateDir(f"{dir_path}\\{Settings['Dir_Dicts_Downloads']}")
+    app.CreateDir(f"{dir_path}\\{Settings['Dir_Dicts']}")
+    app.CreateDir(f"{dir_path}\\{Settings['Passwords']}")
+    Dict_Download = app.ReadJson(app.SettingDicts)
     current_date = datetime.datetime.now()
     current_date_str = current_date.strftime("%d.%m.%Y %H:%M:%S")
     print(f"-------------------------{current_date_str}--------------------------")
-    print(f"1) Работа с Словарями")
-    print(f"2) Работа с CAP файлами Расшыфровка")
+    print(f"1) Список Словарей")
+    print(f"2) Работа с Словарями")
+    print(f"3) Работа с CAP файлами Расшыфровка")
     result = app.InputWhile("Номер Выбора: ")
     if result=="1":
         print("------------Словари-------------")
         for li in Dict_Download:
+            dict_num+=1
             name=li["Name"]
             files = li["Files"]
-            print(f"1) Словарь {name} Количество {len(files)}")
-        print(f"1) Скачать Словарь и Распоковать")
-        print(f"2) Работа с CAP файлами Расшыфровка") 
-        print(f"3) Работа с CAP файлами Расшыфровка") 
+            print(f"{dict_num}) {name} | Количество Файлов: {len(files)}")
+        dict_num = 0
+        print("--------------------------------")
     if result=="2":
+        print("------------Словари-------------")
+        for li in Dict_Download:
+            dict_num+=1
+            name=li["Name"]
+            files = li["Files"]
+            print(f"{dict_num}) {name} | Количество Файлов: {len(files)}")
+        dict_num = 0
+        print("--------------------------------")
+        print(f"1) Скачать Словарь и Распоковать") 
+        print(f"2) Очистить Все Словари")
+        result2 = app.InputWhile("Номер Выбора: ")
+        if result2=="1":
+            select_dict = app.InputWhile("Укажыте Словари: ")
+            num_dic = int(select_dict)
+            num_dic = num_dic-1
+            if len(Dict_Download)>-1:
+                sel_dic = Dict_Download[num_dic]
+                print(f"Выбран Словарь: {sel_dic['Name']}")
+                print(f"Список Файлов: {sel_dic['Files']}")
+                app.PauseProcess()
+                arhivator = str(Settings["Arhivator"])
+                select_url = Settings["Type_URLS"]
+                if arhivator.upper() in sel_dic["Urls"]:
+                    if select_url=="GoogleDisk":
+                        url=sel_dic["Urls"][arhivator]
+                        url_google = app.GetGoogleLink(url)
+                        path_download = f"{dir_path}\\{Settings['Dir_Dicts_Downloads']}\\{sel_dic['Name']}.{dict_arhivator[arhivator.lower()]}"
+                        result3=app.DownloadFile(url_google, path_download)
+                        if result3==True:
+                            if dict_arhivator[arhivator]=="ZIP":
+                                os.system(f'"p7zip" x "{path_download}" -o "{dir_path}\\{Settings['Dir_Dicts']}"')
+                            if dict_arhivator[arhivator]=="7Z":
+                                os.system(f'"zip" "{path_download}" -d "{dir_path}\\{Settings['Dir_Dicts']}"')
+                            if dict_arhivator[arhivator]=="RAR":
+                                os.system(f'"rar" x "{path_download}" -o "{dir_path}\\{Settings['Dir_Dicts']}"')
+                    if select_url=="DirectLink":
+                        url=sel_dic["Urls"][arhivator]
+                        path_download = f"{dir_path}\\{Settings['Dir_Dicts_Downloads']}\\{sel_dic['Name']}.{dict_arhivator[arhivator.lower()]}"
+                        result3=app.DownloadFile(url, path_download)
+                        if result3==True:
+                            if dict_arhivator[arhivator]=="ZIP":
+                                os.system(f'"p7zip" x "{path_download}" -o "{dir_path}\\{Settings['Dir_Dicts']}"')
+                            if dict_arhivator[arhivator]=="7Z":
+                                os.system(f'"zip" "{path_download}" -d "{dir_path}\\{Settings['Dir_Dicts']}"')
+                            if dict_arhivator[arhivator]=="RAR":
+                                os.system(f'"rar" x "{path_download}" -o "{dir_path}\\{Settings['Dir_Dicts']}"')
+                else:
+                    print(f"Нету Такого {arhivator} Архиватора!")
+        if result2=="2":
+            pass
+    if result=="3":
         pass
     elif result!="1" and result!="2":
         print(f"Не Верная {result} Команда!")

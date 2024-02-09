@@ -1,9 +1,11 @@
 {
     "Version": 1.003,
+    "Dir_AirCrackNg": "aircrack_ng",
     "Dir_CAPS": "WIFICAPS",
     "Dir_Dicts_Downloads": "DownloadDicts",
     "Dir_Dicts": "Dicts",
     "Passwords": "Passs",
     "FileDicts":"DictsDownload.json",
-    "Arhivator": "RAR"
+    "Type_URLS": "GoogleDisk",
+    "Arhivator": "zip"
 }
