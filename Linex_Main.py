@@ -82,7 +82,7 @@ while True:
                         if result3==True:
                             if dict_arhivator[arhivator]=="ZIP":
                                 dit_dicts_ext = Settings['Dir_Dicts']
-                                command = f'"p7zip" x "{path_download}" -o "{dir_path}/{dit_dicts_ext}"'
+                                command = f'"7z" x "{path_download}" -o "{dir_path}/{dit_dicts_ext}"'
                                 os.system(command)
                                 print(command)
                             if dict_arhivator[arhivator]=="7Z":
@@ -102,7 +102,7 @@ while True:
                         if result3==True:
                             if dict_arhivator[arhivator]=="ZIP":
                                 dit_dicts_ext = Settings['Dir_Dicts']
-                                command = f'"p7zip" x "{path_download}" -o "{dir_path}/{dit_dicts_ext}"'
+                                command = f'"7z" x "{path_download}" -o "{dir_path}/{dit_dicts_ext}"'
                                 os.system(command)
                                 print(command)
                             if dict_arhivator[arhivator]=="7Z":
