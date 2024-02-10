@@ -18,10 +18,18 @@ dict_num=0 # Количество
 while True:
     Settings=app.ReadJson(app.SettingFile)
     # Создание Папок
-    app.CreateDir(f"{dir_path}/{Settings['Dir_CAPS']}")
-    app.CreateDir(f"{dir_path}/{Settings['Dir_Dicts_Downloads']}")
-    app.CreateDir(f"{dir_path}/{Settings['Dir_Dicts']}")
-    app.CreateDir(f"{dir_path}/{Settings['Passwords']}")
+    dir_caps=f"{dir_path}/{Settings['Dir_CAPS']}"
+    dir_dircts_down=f"{dir_path}/{Settings['Dir_Dicts_Downloads']}"
+    dir_dircts=f"{dir_path}/{Settings['Dir_Dicts']}"
+    dir_pass=f"{dir_path}/{Settings['Passwords']}"
+    if not os.path.exists(dir_caps):
+        os.system(f"mkdir {dir_caps}")
+    if not os.path.exists(dir_dircts_down):
+        os.system(f"mkdir {dir_dircts_down}")
+    if not os.path.exists(dir_dircts):
+        os.system(f"mkdir {dir_dircts}")
+    if not os.path.exists(dir_pass):
+        os.system(f"mkdir {dir_pass}") 
     Dict_Download = app.ReadJson(app.SettingDicts)
     current_date = datetime.datetime.now()
     current_date_str = current_date.strftime("%d.%m.%Y %H:%M:%S")
