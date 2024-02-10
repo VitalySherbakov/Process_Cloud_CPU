@@ -43,7 +43,7 @@ class Process_Cloud(object):
     def Check_Download_Link(self,link: str):
         """Проверка Наличия Загрузки Файла"""
         try:
-            response = requests.head(link)
+            response = requests.get(link)
             if response.status_code == 200:
                 content_type = response.headers.get('content-type')
                 if content_type and 'application/octet-stream' in content_type:
