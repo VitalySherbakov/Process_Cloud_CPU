@@ -79,7 +79,6 @@ while True:
                         url=sel_dic["Urls"][select_arhivator]
                         url_google = app.GetGoogleLink(url)
                         path_download = f"{dir_path}/{Settings['Dir_Dicts_Downloads']}/{sel_dic['Name']}.{arhivator}"
-                        print(url_google)
                         if app.Check_Download_Link(url_google)==True:
                             result3=app.DownloadFile(url_google, path_download)
                             if result3==True:
