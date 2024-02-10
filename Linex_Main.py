@@ -11,31 +11,30 @@ print(f"---------------------------------------------------")
 print(f"Платформа: {platform_name}")
 print(f"Папка: {dir_path}")
 
-dict_arhivator={"7z": "7z", "zip": "ZIP", "rar": "RAR"}
+dict_arhivator={"7z": "7Z", "zip": "ZIP", "rar": "RAR"}
 # Переменные
 dict_num=0 # Количество
 # Процес
 while True:
     Settings=app.ReadJson(app.SettingFile)
+    arhivator = str(Settings["Arhivator"]) # Архив
+    arhivator = arhivator.lower()
+    select_arhivator = dict_arhivator[arhivator] # Выбор Ссылок
     # Создание Папок
     dir_caps=f"{dir_path}/{Settings['Dir_CAPS']}"
     dir_dircts_down=f"{dir_path}/{Settings['Dir_Dicts_Downloads']}"
     dir_dircts=f"{dir_path}/{Settings['Dir_Dicts']}"
     dir_pass=f"{dir_path}/{Settings['Passwords']}"
-    print(dir_caps)
-    print(dir_dircts_down)
-    print(dir_dircts)
-    print(dir_pass)
     if not os.path.exists(dir_caps):
-        print("1")
         os.system(f'mkdir "{dir_caps}"')
     if not os.path.exists(dir_dircts_down):
         os.system(f'mkdir "{dir_dircts_down}"')
     if not os.path.exists(dir_dircts):
         os.system(f'mkdir "{dir_dircts}"')
     if not os.path.exists(dir_pass):
-        os.system(f'mkdir "{dir_pass}"') 
+        os.system(f'mkdir "{dir_pass}"')
     Dict_Download = app.ReadJson(app.SettingDicts)
+    # Словари
     current_date = datetime.datetime.now()
     current_date_str = current_date.strftime("%d.%m.%Y %H:%M:%S")
     print(f"-------------------------{current_date_str}--------------------------")
@@ -73,38 +72,49 @@ while True:
                 print(f"Выбран Словарь: {sel_dic['Name']}")
                 print(f"Список Файлов: {sel_dic['Files']}")
                 app.PauseProcess()
-                arhivator = str(Settings["Arhivator"])
                 select_url = Settings["Type_URLS"]
-                if arhivator.upper() in sel_dic["Urls"]:
+                if select_arhivator in sel_dic["Urls"]:
                     if select_url=="GoogleDisk":
-                        url=sel_dic["Urls"][arhivator.upper()]
+                        url=sel_dic["Urls"][select_arhivator]
                         url_google = app.GetGoogleLink(url)
-                        path_download = f"{dir_path}/{Settings['Dir_Dicts_Downloads']}/{sel_dic['Name']}.{dict_arhivator[arhivator.lower()]}"
+                        path_download = f"{dir_path}/{Settings['Dir_Dicts_Downloads']}/{sel_dic['Name']}.{arhivator}"
                         result3=app.DownloadFile(url_google, path_download)
                         if result3==True:
                             if dict_arhivator[arhivator]=="ZIP":
                                 dit_dicts_ext = Settings['Dir_Dicts']
-                                os.system(f'"p7zip" x "{path_download}" -o "{dir_path}/{dit_dicts_ext}"')
+                                command = f'"p7zip" x "{path_download}" -o "{dir_path}/{dit_dicts_ext}"'
+                                os.system(command)
+                                print(command)
                             if dict_arhivator[arhivator]=="7Z":
                                 dit_dicts_ext = Settings['Dir_Dicts']
-                                os.system(f'"zip" "{path_download}" -d "{dir_path}/{dit_dicts_ext}"')
+                                command = f'"zip" "{path_download}" -d "{dir_path}/{dit_dicts_ext}"'
+                                os.system(command)
+                                print(command)
                             if dict_arhivator[arhivator]=="RAR":
                                 dit_dicts_ext = Settings['Dir_Dicts']
-                                os.system(f'"rar" x "{path_download}" -o "{dir_path}/{dit_dicts_ext}"')
+                                command = f'"rar" x "{path_download}" -o "{dir_path}/{dit_dicts_ext}"'
+                                os.system(command)
+                                print(command)
                     if select_url=="DirectLink":
-                        url=sel_dic["Urls"][arhivator.upper()]
-                        path_download = f"{dir_path}/{Settings['Dir_Dicts_Downloads']}/{sel_dic['Name']}.{dict_arhivator[arhivator.lower()]}"
+                        url=sel_dic["Urls"][select_arhivator]
+                        path_download = f"{dir_path}/{Settings['Dir_Dicts_Downloads']}/{sel_dic['Name']}.{arhivator}"
                         result3=app.DownloadFile(url, path_download)
                         if result3==True:
                             if dict_arhivator[arhivator]=="ZIP":
                                 dit_dicts_ext = Settings['Dir_Dicts']
-                                os.system(f'"p7zip" x "{path_download}" -o "{dir_path}/{dit_dicts_ext}"')
+                                command = f'"p7zip" x "{path_download}" -o "{dir_path}/{dit_dicts_ext}"'
+                                os.system(command)
+                                print(command)
                             if dict_arhivator[arhivator]=="7Z":
                                 dit_dicts_ext = Settings['Dir_Dicts']
-                                os.system(f'"zip" "{path_download}" -d "{dir_path}/{dit_dicts_ext}"')
+                                command = f'"zip" "{path_download}" -d "{dir_path}/{dit_dicts_ext}"'
+                                os.system(command)
+                                print(command)
                             if dict_arhivator[arhivator]=="RAR":
                                 dit_dicts_ext = Settings['Dir_Dicts']
-                                os.system(f'"rar" x "{path_download}" -o "{dir_path}/{dit_dicts_ext}"')
+                                command = f'"rar" x "{path_download}" -o "{dir_path}/{dit_dicts_ext}"'
+                                os.system(command)
+                                print(command)
                 else:
                     print(f"Нету Такого {arhivator} Архиватора!")
         if result2=="2":
