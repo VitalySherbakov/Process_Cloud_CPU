@@ -22,6 +22,10 @@ while True:
     dir_dircts_down=f"{dir_path}/{Settings['Dir_Dicts_Downloads']}"
     dir_dircts=f"{dir_path}/{Settings['Dir_Dicts']}"
     dir_pass=f"{dir_path}/{Settings['Passwords']}"
+    print(dir_caps)
+    print(dir_dircts_down)
+    print(dir_dircts)
+    print(dir_pass)
     if not os.path.exists(dir_caps):
         os.system(f"mkdir {dir_caps}")
     if not os.path.exists(dir_dircts_down):
