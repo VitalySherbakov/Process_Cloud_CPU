@@ -15,7 +15,6 @@ print(f"Папка: {dir_path}")
 
 dict_arhivator={"7z": "7Z", "zip": "ZIP", "rar": "RAR"}
 # Переменные
-dict_num=0 # Количество
 # Процес
 while True:
     Settings=app.ReadJson(app.SettingFile)

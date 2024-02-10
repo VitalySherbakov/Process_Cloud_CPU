@@ -130,10 +130,11 @@ class Process_Cloud(object):
 
 class Process_Panel(object):
     """Процесс"""
-    def __init__(self, encod="utf-8"):
+    def __init__(self):
         pass
     def List_Dicts(self, Dict_Download):
         """Список Словарей для Загрузки"""
+        dict_num=0 # Количество
         print("------------Словари-------------")
         for li in Dict_Download:
             dict_num+=1
