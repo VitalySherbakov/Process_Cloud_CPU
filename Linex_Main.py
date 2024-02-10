@@ -83,6 +83,9 @@ while True:
                         if result3==True:
                             if dict_arhivator[arhivator]=="7Z":
                                 dit_dicts_ext = Settings['Dir_Dicts']
+                                print(url_google)
+                                print(path_download)
+                                print(f"{dir_path}/{dit_dicts_ext}")
                                 with py7zr.SevenZipFile(f"{path_download}", mode='r') as archive:
                                     archive.extractall(f"{dir_path}/{dit_dicts_ext}")
                             if dict_arhivator[arhivator]=="ZIP":
