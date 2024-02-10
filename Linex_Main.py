@@ -1,5 +1,6 @@
 import os, sys, time, re, json, datetime, random
 from Process_Cloud_CPU import Process_Cloud
+import py7zr
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
 
@@ -80,12 +81,11 @@ while True:
                         path_download = f"{dir_path}/{Settings['Dir_Dicts_Downloads']}/{sel_dic['Name']}.{arhivator}"
                         result3=app.DownloadFile(url_google, path_download)
                         if result3==True:
-                            if dict_arhivator[arhivator]=="ZIP":
-                                dit_dicts_ext = Settings['Dir_Dicts']
-                                command = f'"7z" x "{path_download}" -o "{dir_path}/{dit_dicts_ext}"'
-                                os.system(command)
-                                print(command)
                             if dict_arhivator[arhivator]=="7Z":
+                                dit_dicts_ext = Settings['Dir_Dicts']
+                                with py7zr.SevenZipFile(f"{path_download}", mode='r') as archive:
+                                    archive.extractall(f"{dir_path}/{dit_dicts_ext}")
+                            if dict_arhivator[arhivator]=="ZIP":
                                 dit_dicts_ext = Settings['Dir_Dicts']
                                 command = f'"zip" "{path_download}" -d "{dir_path}/{dit_dicts_ext}"'
                                 os.system(command)
@@ -100,12 +100,11 @@ while True:
                         path_download = f"{dir_path}/{Settings['Dir_Dicts_Downloads']}/{sel_dic['Name']}.{arhivator}"
                         result3=app.DownloadFile(url, path_download)
                         if result3==True:
-                            if dict_arhivator[arhivator]=="ZIP":
-                                dit_dicts_ext = Settings['Dir_Dicts']
-                                command = f'"7z" x "{path_download}" -o "{dir_path}/{dit_dicts_ext}"'
-                                os.system(command)
-                                print(command)
                             if dict_arhivator[arhivator]=="7Z":
+                                dit_dicts_ext = Settings['Dir_Dicts']
+                                with py7zr.SevenZipFile(f"{path_download}", mode='r') as archive:
+                                    archive.extractall(f"{dir_path}/{dit_dicts_ext}")
+                            if dict_arhivator[arhivator]=="ZIP":
                                 dit_dicts_ext = Settings['Dir_Dicts']
                                 command = f'"zip" "{path_download}" -d "{dir_path}/{dit_dicts_ext}"'
                                 os.system(command)
