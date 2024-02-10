@@ -9,9 +9,9 @@ dir_path = os.path.dirname(os.path.realpath(__file__))
 
 class Process_Cloud(object):
     """Настройки Приложения"""
-    SettingFile=f"{dir_path}\\SettingApp.json"
+    SettingFile=f"{dir_path}/SettingApp.json"
     """Адресс Настроек"""
-    SettingDicts=f"{dir_path}\\DictsDownload.json"
+    SettingDicts=f"{dir_path}/DictsDownload.json"
     """Словари"""
     def __init__(self, encod="utf-8"):
         pass
