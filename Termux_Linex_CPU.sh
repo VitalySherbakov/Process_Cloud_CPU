@@ -52,8 +52,6 @@ function function_pack(){
     python3.8 -m pip install tqdm
     python3.8 -m pip install py7zr
     python3.8 -m pip install rarfile
-    echo "Загрузка Пакетов 4..."
-    function_install_cpu
     echo "-----Конец Установки Пакетов-----"
 }
 function access_ubuntu(){
@@ -66,6 +64,7 @@ function access_ubuntu(){
 function main(){
     # Основное Меню
     echo "Команда: pack (Установка необходимых пакетов)"
+    echo "Команда: cpu (Установка утелиты для всех Linex, кроме Kali)"
     echo "Команда: run (Запуск Скрипта)"
     echo "Команда: exit (Выход)"
     echo "Введите Команду:"
@@ -73,6 +72,10 @@ function main(){
     if [ "$command" == "pack" ]; then
         access_ubuntu
 		function_pack
+	fi
+    if [ "$command" == "cpu" ]; then
+        access_ubuntu
+		function_install_cpu
 	fi
     if [ "$command" == "run" ]; then
         python3.8 "./$dirsource/Linex_Main.py" "$1"

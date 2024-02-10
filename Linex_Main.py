@@ -79,44 +79,50 @@ while True:
                         url=sel_dic["Urls"][select_arhivator]
                         url_google = app.GetGoogleLink(url)
                         path_download = f"{dir_path}/{Settings['Dir_Dicts_Downloads']}/{sel_dic['Name']}.{arhivator}"
-                        result3=app.DownloadFile(url_google, path_download)
-                        if result3==True:
-                            if dict_arhivator[arhivator]=="7Z":
-                                dit_dicts_ext = Settings['Dir_Dicts']
-                                print(url_google)
-                                print(path_download)
-                                print(f"{dir_path}/{dit_dicts_ext}")
-                                with py7zr.SevenZipFile(f"{path_download}", mode='r') as archive:
-                                    archive.extractall(f"{dir_path}/{dit_dicts_ext}")
-                            if dict_arhivator[arhivator]=="ZIP":
-                                dit_dicts_ext = Settings['Dir_Dicts']
-                                command = f'"zip" "{path_download}" -d "{dir_path}/{dit_dicts_ext}"'
-                                os.system(command)
-                                print(command)
-                            if dict_arhivator[arhivator]=="RAR":
-                                dit_dicts_ext = Settings['Dir_Dicts']
-                                command = f'"rar" x "{path_download}" -o "{dir_path}/{dit_dicts_ext}"'
-                                os.system(command)
-                                print(command)
+                        if app.Check_Download_Link(url_google)==True:
+                            result3=app.DownloadFile(url_google, path_download)
+                            if result3==True:
+                                if dict_arhivator[arhivator]=="7Z":
+                                    dit_dicts_ext = Settings['Dir_Dicts']
+                                    print(url_google)
+                                    print(path_download)
+                                    print(f"{dir_path}/{dit_dicts_ext}")
+                                    with py7zr.SevenZipFile(f"{path_download}", mode='r') as archive:
+                                        archive.extractall(f"{dir_path}/{dit_dicts_ext}")
+                                if dict_arhivator[arhivator]=="ZIP":
+                                    dit_dicts_ext = Settings['Dir_Dicts']
+                                    command = f'"zip" "{path_download}" -d "{dir_path}/{dit_dicts_ext}"'
+                                    os.system(command)
+                                    print(command)
+                                if dict_arhivator[arhivator]=="RAR":
+                                    dit_dicts_ext = Settings['Dir_Dicts']
+                                    command = f'"rar" x "{path_download}" -o "{dir_path}/{dit_dicts_ext}"'
+                                    os.system(command)
+                                    print(command)
+                        else:
+                            print(f"Нету Ссылки на {sel_dic['Name']} Словарь")
                     if select_url=="DirectLink":
                         url=sel_dic["Urls"][select_arhivator]
                         path_download = f"{dir_path}/{Settings['Dir_Dicts_Downloads']}/{sel_dic['Name']}.{arhivator}"
-                        result3=app.DownloadFile(url, path_download)
-                        if result3==True:
-                            if dict_arhivator[arhivator]=="7Z":
-                                dit_dicts_ext = Settings['Dir_Dicts']
-                                with py7zr.SevenZipFile(f"{path_download}", mode='r') as archive:
-                                    archive.extractall(f"{dir_path}/{dit_dicts_ext}")
-                            if dict_arhivator[arhivator]=="ZIP":
-                                dit_dicts_ext = Settings['Dir_Dicts']
-                                command = f'"zip" "{path_download}" -d "{dir_path}/{dit_dicts_ext}"'
-                                os.system(command)
-                                print(command)
-                            if dict_arhivator[arhivator]=="RAR":
-                                dit_dicts_ext = Settings['Dir_Dicts']
-                                command = f'"rar" x "{path_download}" -o "{dir_path}/{dit_dicts_ext}"'
-                                os.system(command)
-                                print(command)
+                        if app.Check_Download_Link(url)==True:
+                            result3=app.DownloadFile(url, path_download)
+                            if result3==True:
+                                if dict_arhivator[arhivator]=="7Z":
+                                    dit_dicts_ext = Settings['Dir_Dicts']
+                                    with py7zr.SevenZipFile(f"{path_download}", mode='r') as archive:
+                                        archive.extractall(f"{dir_path}/{dit_dicts_ext}")
+                                if dict_arhivator[arhivator]=="ZIP":
+                                    dit_dicts_ext = Settings['Dir_Dicts']
+                                    command = f'"zip" "{path_download}" -d "{dir_path}/{dit_dicts_ext}"'
+                                    os.system(command)
+                                    print(command)
+                                if dict_arhivator[arhivator]=="RAR":
+                                    dit_dicts_ext = Settings['Dir_Dicts']
+                                    command = f'"rar" x "{path_download}" -o "{dir_path}/{dit_dicts_ext}"'
+                                    os.system(command)
+                                    print(command)
+                        else:
+                            print(f"Нету Ссылки на {sel_dic['Name']} Словарь")
                 else:
                     print(f"Нету Такого {arhivator} Архиватора!")
         if result2=="2":

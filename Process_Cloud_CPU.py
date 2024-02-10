@@ -40,6 +40,17 @@ class Process_Cloud(object):
         else:
             print(f"ERROR: Нету {file} Файла!")
         return data
+    def Check_Download_Link(self,link: str):
+        """Проверка Наличия Загрузки Файла"""
+        try:
+            response = requests.head(link)
+            if response.status_code == 200:
+                content_type = response.headers.get('content-type')
+                if content_type and 'application/octet-stream' in content_type:
+                    return True
+            return False
+        except requests.exceptions.RequestException:
+            return False
     def GetGoogleLink(self, link: str):
         """Получить Прямую Ссылку на Google Link"""
         url_down=None
