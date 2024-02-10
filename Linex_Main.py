@@ -39,9 +39,10 @@ while True:
     current_date = datetime.datetime.now()
     current_date_str = current_date.strftime("%d.%m.%Y %H:%M:%S")
     print(f"-------------------------{current_date_str}--------------------------")
-    print(f"1) Список Словарей")
-    print(f"2) Работа с Словарями")
-    print(f"3) Работа с CAP файлами Расшыфровка")
+    print(f"1) Список Словарей для Загрузки")
+    print(f"2) Список Словарей Уже Загруженых")
+    print(f"3) Работа с Словарями")
+    print(f"4) Работа с CAP файлами Расшыфровка")
     result = app.InputWhile("Номер Выбора: ")
     if result=="1":
         print("------------Словари-------------")
@@ -53,6 +54,13 @@ while True:
         dict_num = 0
         print("--------------------------------")
     if result=="2":
+        listing_dict=[]
+        if os.path.exists(dir_dircts)==True:
+            filesAll = os.listdir(dir_dircts)
+            for li in Dict_Download:
+                files = li["Files"]
+                print(type(files))
+    if result=="3":
         print("------------Словари-------------")
         for li in Dict_Download:
             dict_num+=1
@@ -136,7 +144,7 @@ while True:
                     print(f"Нету Такого {arhivator} Архиватора!")
         if result2=="2":
             pass
-    if result=="3":
+    if result=="4":
         pass
     elif result!="1" and result!="2":
         print(f"Не Верная {result} Команда!")
