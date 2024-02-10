@@ -84,21 +84,24 @@ while True:
                             if result3==True:
                                 if dict_arhivator[arhivator]=="7Z":
                                     dit_dicts_ext = Settings['Dir_Dicts']
-                                    print(url_google)
-                                    print(path_download)
-                                    print(f"{dir_path}/{dit_dicts_ext}")
                                     with py7zr.SevenZipFile(f"{path_download}", mode='r') as archive:
                                         archive.extractall(f"{dir_path}/{dit_dicts_ext}")
+                                        os.remove(path_download)
+                                        print(f"Словарь {sel_dic['Name']} Загружен!")
                                 if dict_arhivator[arhivator]=="ZIP":
                                     dit_dicts_ext = Settings['Dir_Dicts']
                                     command = f'"zip" "{path_download}" -d "{dir_path}/{dit_dicts_ext}"'
                                     os.system(command)
-                                    print(command)
+                                    #print(command)
+                                    os.remove(path_download)
+                                    print(f"Словарь {sel_dic['Name']} Загружен!")
                                 if dict_arhivator[arhivator]=="RAR":
                                     dit_dicts_ext = Settings['Dir_Dicts']
                                     command = f'"rar" x "{path_download}" -o "{dir_path}/{dit_dicts_ext}"'
                                     os.system(command)
-                                    print(command)
+                                    #print(command)
+                                    os.remove(path_download)
+                                    print(f"Словарь {sel_dic['Name']} Загружен!")
                         else:
                             print(f"Нету Ссылки на {sel_dic['Name']} Словарь")
                     if select_url=="DirectLink":
@@ -111,16 +114,22 @@ while True:
                                     dit_dicts_ext = Settings['Dir_Dicts']
                                     with py7zr.SevenZipFile(f"{path_download}", mode='r') as archive:
                                         archive.extractall(f"{dir_path}/{dit_dicts_ext}")
+                                        os.remove(path_download)
+                                        print(f"Словарь {sel_dic['Name']} Загружен!")
                                 if dict_arhivator[arhivator]=="ZIP":
                                     dit_dicts_ext = Settings['Dir_Dicts']
                                     command = f'"zip" "{path_download}" -d "{dir_path}/{dit_dicts_ext}"'
                                     os.system(command)
-                                    print(command)
+                                    #print(command)
+                                    os.remove(path_download)
+                                    print(f"Словарь {sel_dic['Name']} Загружен!")
                                 if dict_arhivator[arhivator]=="RAR":
                                     dit_dicts_ext = Settings['Dir_Dicts']
                                     command = f'"rar" x "{path_download}" -o "{dir_path}/{dit_dicts_ext}"'
                                     os.system(command)
-                                    print(command)
+                                    #print(command)
+                                    os.remove(path_download)
+                                    print(f"Словарь {sel_dic['Name']} Загружен!")
                         else:
                             print(f"Нету Ссылки на {sel_dic['Name']} Словарь")
                 else:
