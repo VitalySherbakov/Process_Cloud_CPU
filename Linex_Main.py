@@ -129,7 +129,14 @@ while True:
             except Exception as ex:
                 print(f"Ошыбка: {ex}!")
         if result2=="2":
-            pass
+            if os.path.exists(dir_dircts)==True:
+                # Список Файлов
+                filesAll = os.listdir(dir_dircts)
+                for fi in filesAll:
+                    os.remove(fi)
+                print("Папка Словарями Очищена!")
+            else:
+                print(f"Нету Папки {dir_dircts} Словарей!")
     if result=="4":
         pass
     elif result!="1" and result!="2" and result!="3" and result!="4":
