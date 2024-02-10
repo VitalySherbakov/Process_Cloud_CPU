@@ -34,7 +34,7 @@ while True:
     if not os.path.exists(dir_dircts):
         os.system(f'mkdir "{dir_dircts}"')
     if not os.path.exists(dir_pass):
-        os.system(f"mkdir "{dir_pass}"') 
+        os.system(f'mkdir "{dir_pass}"') 
     Dict_Download = app.ReadJson(app.SettingDicts)
     current_date = datetime.datetime.now()
     current_date_str = current_date.strftime("%d.%m.%Y %H:%M:%S")
