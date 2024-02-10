@@ -1,10 +1,11 @@
 import os, sys, time, re, json, datetime, random
-from Process_Cloud_CPU import Process_Cloud
+from Process_Cloud_CPU import Process_Cloud, Process_Panel
 import py7zr
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
 
 app = Process_Cloud()
+panel = Process_Panel()
 
 platform_name=sys.argv[1] #Получить Платформу для доступа
 
@@ -45,30 +46,11 @@ while True:
     print(f"4) Работа с CAP файлами Расшыфровка")
     result = app.InputWhile("Номер Выбора: ")
     if result=="1":
-        print("------------Словари-------------")
-        for li in Dict_Download:
-            dict_num+=1
-            name=li["Name"]
-            files = li["Files"]
-            print(f"{dict_num}) {name} | Количество Файлов: {len(files)}")
-        dict_num = 0
-        print("--------------------------------")
+        panel.List_Dicts(Dict_Download)
     if result=="2":
-        listing_dict=[]
-        if os.path.exists(dir_dircts)==True:
-            filesAll = os.listdir(dir_dircts)
-            for li in Dict_Download:
-                files = li["Files"]
-                print(type(files))
+        panel.List_Dicts_Exists(Dict_Download,dir_dircts) 
     if result=="3":
-        print("------------Словари-------------")
-        for li in Dict_Download:
-            dict_num+=1
-            name=li["Name"]
-            files = li["Files"]
-            print(f"{dict_num}) {name} | Количество Файлов: {len(files)}")
-        dict_num = 0
-        print("--------------------------------")
+        panel.List_Dicts(Dict_Download)
         print(f"1) Скачать Словарь и Распоковать") 
         print(f"2) Очистить Все Словари")
         result2 = app.InputWhile("Номер Выбора: ")

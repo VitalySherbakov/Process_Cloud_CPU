@@ -126,3 +126,40 @@ class Process_Cloud(object):
     def PauseProcess(self):
         """Пауза 2"""
         input("-------------Начать-------------")
+
+
+class Process_Panel(object):
+    """Процесс"""
+    def __init__(self, encod="utf-8"):
+        pass
+    def List_Dicts(self, Dict_Download):
+        """Список Словарей для Загрузки"""
+        print("------------Словари-------------")
+        for li in Dict_Download:
+            dict_num+=1
+            name=li["Name"]
+            files = li["Files"]
+            print(f"{dict_num}) {name} | Количество Файлов: {len(files)}")
+        dict_num = 0
+        print("--------------------------------")
+    def List_Dicts_Exists(self, Dict_Download , dir_dircts):
+        """Список Уже Загруженых"""
+        listing_dict=[]
+        if os.path.exists(dir_dircts)==True:
+            # Список Файлов
+            filesAll = os.listdir(dir_dircts)
+            # Цыпочка
+            k,n=0,0
+            for li in Dict_Download:
+                name=li["Name"]
+                files = list(li["Files"])
+                counts = len(files)
+                for fi in files:
+                    if fi in filesAll:
+                        k+=1
+                if counts==k:
+                    k=0
+                    listing_dict.append(name)
+            for names in listing_dict:
+                n+=1
+                print(f"{n}) Словарь {names}")
