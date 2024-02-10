@@ -7,6 +7,7 @@ app = Process_Cloud()
 
 platform_name=sys.argv[1] #Получить Платформу для доступа
 
+print(f"---------------------------------------------------")
 print(f"Платформа: {platform_name}")
 print(f"Папка: {dir_path}")
 
@@ -63,7 +64,7 @@ while True:
                 select_url = Settings["Type_URLS"]
                 if arhivator.upper() in sel_dic["Urls"]:
                     if select_url=="GoogleDisk":
-                        url=sel_dic["Urls"][arhivator]
+                        url=sel_dic["Urls"][arhivator.upper()]
                         url_google = app.GetGoogleLink(url)
                         path_download = f"{dir_path}/{Settings['Dir_Dicts_Downloads']}/{sel_dic['Name']}.{dict_arhivator[arhivator.lower()]}"
                         result3=app.DownloadFile(url_google, path_download)
@@ -78,7 +79,7 @@ while True:
                                 dit_dicts_ext = Settings['Dir_Dicts']
                                 os.system(f'"rar" x "{path_download}" -o "{dir_path}/{dit_dicts_ext}"')
                     if select_url=="DirectLink":
-                        url=sel_dic["Urls"][arhivator]
+                        url=sel_dic["Urls"][arhivator.upper()]
                         path_download = f"{dir_path}/{Settings['Dir_Dicts_Downloads']}/{sel_dic['Name']}.{dict_arhivator[arhivator.lower()]}"
                         result3=app.DownloadFile(url, path_download)
                         if result3==True:
