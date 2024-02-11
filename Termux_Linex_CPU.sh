@@ -20,16 +20,27 @@ function function_install_cpu(){
 	cd ..
 }
 function function_python(){
-    apt update -y
-    apt install -y build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev wget
-    wget https://www.python.org/ftp/python/3.10.0/Python-3.10.0.tgz
-    tar -xf Python-3.10.0.tgz
-    cd Python-3.10.0
-    ./configure --enable-optimizations --prefix=/usr/local
-    make -j $(nproc)
-    make altinstall
-    apt update -y
-    /usr/local/bin/python3.10 --version
+    sudo apt-get install build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libnl-3-dev libnl-genl-3-dev pkg-config libsqlite3-dev libpcre3-dev libffi-dev curl libreadline-dev ethtool libbz2-dev libtool autoconf -y
+	wget https://www.python.org/ftp/python/3.8.0/Python-3.8.0.tgz
+	tar -xf Python-3.8.0.tgz
+	rm -r Python-3.8.0.tgz
+	chmod -R 777 "Python-3.8.0/"
+	cd Python-3.8.0
+	./configure --enable-optimizations
+	make -j $(nproc)
+	sudo make altinstall
+	update_mashine
+	pip_install_python
+	pip install --upgrade pip
+	python3.8 --version
+	curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+	sudo python3.8 get-pip.py
+	python3.8 -m pip install requests
+	python3.8 -m pip install alive-progress
+	python3.8 -m pip install tqdm
+	python3.8 -m pip install py7zr
+	python3.8 -m pip install rarfile
+    python3.8 -m pip install urllib3==1.26.7
 }
 function function_pack(){
     # Установка Пакетов
