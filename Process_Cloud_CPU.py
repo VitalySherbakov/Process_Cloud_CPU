@@ -167,6 +167,7 @@ class Process_Panel(object):
                 if counts==k:
                     k=0
                     listing_dict.append(name)
+            print("------------Загруженые Словари-------------")
             for names in listing_dict:
                 n+=1
                 print(f"{n}) Словарь {names}")
