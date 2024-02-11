@@ -9,6 +9,7 @@ function function_install_cpu(){
 	# Установка CPU
 	apt update -y
 	git clone https://github.com/aircrack-ng/aircrack-ng
+    chmod -R 777 "aircrack-ng/"
     cd aircrack-ng
     bash "./autogen.sh"
     "./configure"
@@ -20,8 +21,10 @@ function function_install_cpu(){
 	cd ..
 }
 function function_python(){
+    apt update -y
     sudo apt-get install build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libnl-3-dev libnl-genl-3-dev pkg-config libsqlite3-dev libpcre3-dev libffi-dev curl libreadline-dev ethtool libbz2-dev libtool autoconf -y
-	wget https://www.python.org/ftp/python/3.8.0/Python-3.8.0.tgz
+	apt update -y
+    wget https://www.python.org/ftp/python/3.8.0/Python-3.8.0.tgz
 	tar -xf Python-3.8.0.tgz
 	rm -r Python-3.8.0.tgz
 	chmod -R 777 "Python-3.8.0/"
@@ -29,12 +32,11 @@ function function_python(){
 	./configure --enable-optimizations
 	make -j $(nproc)
 	sudo make altinstall
-	update_mashine
-	pip_install_python
+	apt update -y
+    wget -O get-pip.py https://bootstrap.pypa.io/get-pip.py
+    sudo python3.8 get-pip.py
 	pip install --upgrade pip
 	python3.8 --version
-	curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
-	sudo python3.8 get-pip.py
 	python3.8 -m pip install requests
 	python3.8 -m pip install alive-progress
 	python3.8 -m pip install tqdm
