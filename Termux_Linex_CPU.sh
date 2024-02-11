@@ -92,13 +92,11 @@ do
     echo "-------------------------$current_time--------------------------"
     echo "Платформа: $distributivelinex"
     echo "Версия: $numberversionlinex"
-    if [ "$distributivelinex" == "Ubuntu" ]; then
-        access_ubuntu
-        main "$distributivelinex"
-    fi
-    if [ "$distributivelinex" == "Linex" ]; then
-        access_ubuntu
-        main "$distributivelinex"
-    fi
+    access_ubuntu
+    main "$distributivelinex"
+    #if [ "$distributivelinex" == "Ubuntu" ]; then
+        #access_ubuntu
+        #main "$distributivelinex"
+    #fi
     read -p "Нажмите Enter, чтобы продолжить"
 done
