@@ -164,3 +164,17 @@ class Process_Panel(object):
             for names in listing_dict:
                 n+=1
                 print(f"{n}) Словарь {names}")
+    def List_Caps(self, dir_caps)->list:
+        """Список CAP Файлов"""
+        filesAll=[]
+        if os.path.exists(dir_caps)==True:
+            filesAll = os.listdir(dir_caps)
+            print("------------CAP Файлы-------------")
+            for i,li in enumerate(filesAll):
+                i=i+1
+                print(f"{i}) {li}")
+            print("--------------------------------")
+        else:
+            print(f"Нету {dir_caps} Папки с CAP файлами!")
+        return filesAll
+

@@ -15,6 +15,7 @@ print(f"Папка: {dir_path}")
 
 dict_arhivator={"7z": "7Z", "zip": "ZIP", "rar": "RAR"}
 # Переменные
+sessionfile="home.session"
 # Процес
 while True:
     Settings=app.ReadJson(app.SettingFile)
@@ -138,7 +139,33 @@ while True:
             else:
                 print(f"Нету Папки {dir_dircts} Словарей!")
     if result=="4":
-        pass
+        listcaps=panel.List_Caps(dir_caps)
+        select_cap = app.InputWhile("Выбери файл CAP: ")
+        if len(listcaps)>-1:
+            int_cap = int(select_cap)
+            int_cap=int_cap-1
+            filecap=listcaps[int_cap]
+            namecap=filecap
+            filecap=f"{dir_caps}/{filecap}"
+            panel.List_Dicts_Exists(Dict_Download,dir_dircts)
+            select_dicts = app.InputWhile("Выбери Словари: ")
+            mass_dicts = select_dicts.split(",")
+            for down in mass_dicts:
+                num_dic = int(down)
+                num_dic = num_dic-1
+                if len(Dict_Download)>-1:
+                    sel_dic = Dict_Download[num_dic]
+                    print(f"Выбран Словарь: {sel_dic['Name']}")
+                    print(f"Список Файлов: {sel_dic['Files']}")
+                    for dic in sel_dic['Files']:
+                        if os.path.exists(f"{dir_pass}/{namecap}_pass.txt")==True:
+                            print("Пароль Найден!")
+                            password=app.ReadFile(f"{dir_pass}/{namecap}_pass.txt")
+                            print(f"Пароль: {password} | {namecap}")
+                            break
+                        if os.path.exists(sessionfile)==False:
+                            cmd=f'aircrack-ng -w "{dir_dircts}/{dic}" -N {sessionfile} -l "{dir_pass}/{namecap}_pass.txt" "{filecap}"'
+                            os.system(cmd)
     elif result!="1" and result!="2" and result!="3" and result!="4":
         print(f"Не Верная {result} Команда!")
     app.Pause()
