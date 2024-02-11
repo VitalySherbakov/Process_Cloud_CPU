@@ -12,24 +12,20 @@ chmod -R 777 Process_Cloud_CPU && rm -r Process_Cloud_CPU
 Ссылка на Загрузку Termux
 https://f-droid.org/ru/packages/com.termux/
 
-Понадобиться Размер Kali 1.85 Гб
-
 Установка
 pkg upgrade -y
-pkg install wget -y
-pkg install python -y
 
-Загрузка Kali Linex 
-wget -O install-nethunter-termux http://offs.ec/2MceZWr
+Загрузка
+pkg install proot-distro
 
-Запуск
-chmod +x install-nethunter-termux ./install-nethunter-termux ARM64
+Список Дистрибутивов
+proot-distro list
 
-Первый Вход
-nethunter kex passwd
+Установка Ubuntu
+proot-distro install ubuntu
 
-Вход в Консоль Kali
-nh
+Вход в Консоль Ubuntu
+proot-distro login ubuntu
 
 ---------------------Описание Общее----------------------
 {
