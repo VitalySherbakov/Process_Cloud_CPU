@@ -5,6 +5,6 @@
     "Dir_Dicts": "Dicts",
     "Passwords": "Passs",
     "FileDicts":"DictsDownload.json",
-    "Type_URLS": "GoogleDisk",
+    "Type_URLS": "DirectLink",
     "Arhivator": "7z"
 }
