@@ -70,15 +70,7 @@ function function_pack2(){
 	apt install unrar-free -y
     apt update -y
     echo "Загрузка Пакетов 2..."
-    #apt install -y zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev wget
     apt install -y build-essential
-    #wget https://www.python.org/ftp/python/3.10.0/Python-3.10.0.tgz
-    #tar -xf Python-3.10.0.tgz
-    #cd Python-3.10.0
-    #./configure --enable-optimizations --prefix=/usr/local
-    #make -j $(nproc)
-    #make altinstall
-    #/usr/local/bin/python3.10 --version
     apt install -y software-properties-common
     add-apt-repository -y ppa:deadsnakes/ppa
     apt update -y

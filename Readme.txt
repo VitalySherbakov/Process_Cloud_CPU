@@ -8,6 +8,28 @@ bash ./Process_Cloud_CPU/Termux_Linex_CPU.sh
 Удалить Программу
 chmod -R 777 Process_Cloud_CPU && rm -r Process_Cloud_CPU
 
+----------------Для Смартфона--------------
+Ссылка на Загрузку Termux
+https://f-droid.org/ru/packages/com.termux/
+
+Понадобиться Размер Kali 1.85 Гб
+
+Установка
+pkg upgrade -y
+pkg install wget -y
+pkg install python -y
+
+Загрузка Kali Linex 
+wget -O install-nethunter-termux http://offs.ec/2MceZWr
+
+Запуск
+chmod +x install-nethunter-termux ./install-nethunter-termux ARM64
+
+Первый Вход
+nethunter kex passwd
+
+Вход в Консоль Kali
+nh
 
 ---------------------Описание Общее----------------------
 {
