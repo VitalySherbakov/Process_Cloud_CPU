@@ -192,9 +192,9 @@ while True:
     if result=="7":
         if os.path.exists(f"{dir_path}\\{sessionfile}")==True:
             os.remove(f"{dir_path}\\{sessionfile}")
-            print(f"Файл {f"{dir_path}\\{sessionfile}"} Сессии Удален!")
+            print(f"Файл {dir_path}\\{sessionfile} Сессии Удален!")
         else:
-            print(f"Файл {f"{dir_path}\\{sessionfile}"} Нету!")
+            print(f"Файл {dir_path}\\{sessionfile} Нету!")
     elif result!="1" and result!="2" and result!="3" and result!="4" and result!="5" and result!="6" and result!="7" and result!="8":
         print(f"Не Верная {result} Команда!")
     app.Pause()
