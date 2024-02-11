@@ -132,6 +132,12 @@ class Process_Panel(object):
     """Процесс"""
     def __init__(self):
         pass
+    def GetDictsFiles(self, Dict_Download, name: str)->list:
+        """Получить по Имени Список Файлов Словарей"""
+        for dic in Dict_Download:
+            if dic['Name'] == name:
+                return dic['Files']
+        return None
     def List_Dicts(self, Dict_Download):
         """Список Словарей для Загрузки"""
         dict_num=0 # Количество

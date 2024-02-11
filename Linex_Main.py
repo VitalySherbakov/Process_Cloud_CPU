@@ -46,6 +46,8 @@ while True:
     print(f"4) Работа с CAP файлами Расшыфровка")
     print(f"5) Список Паролей CAP файлов")
     print(f"6) Скачать CAP Файл по Ссылке")
+    print(f"7) Использовать Сессию до Расшыфровки")
+    print(f"8) Удалить Сессию до Расшыфровки")
     result = app.InputWhile("Номер Выбора: ")
     if result=="1":
         panel.List_Dicts(Dict_Download)
@@ -157,22 +159,18 @@ while True:
                 num_dic = num_dic-1
                 if len(listing_dicts)>-1:
                     sel_dic_name = listing_dicts[num_dic]
-                    print(sel_dic_name)
-                    print(Dict_Download)
-                    # print(f"Выбран Словарь: {sel_dic['Name']}")
-                    # print(f"Список Файлов: {sel_dic['Files']}")
-                    # for dic in sel_dic['Files']:
-                    #     if os.path.exists(f"{dir_pass}/{namecap}_pass.txt")==True:
-                    #         print("Пароль Найден!")
-                    #         password=app.ReadFile(f"{dir_pass}/{namecap}_pass.txt")
-                    #         print(f"Пароль: {password} | {namecap}")
-                    #         break
-                    #     if os.path.exists(sessionfile)==False:
-                    #         cmd=f'aircrack-ng -w "{dir_dircts}/{dic}" -N {sessionfile} -l "{dir_pass}/{namecap}_pass.txt" "{filecap}"'
-                    #         os.system(cmd)
-                        # else:
-                        #     cmd=f'aircrack-ng -R "{sessionfile}"'
-                        #     os.system(cmd)
+                    files_dicts=panel.GetDictsFiles(Dict_Download, sel_dic_name)
+                    print(f"Выбран Словарь: {sel_dic_name}")
+                    print(f"Список Файлов: {files_dicts}")
+                    for dic in files_dicts:
+                        if os.path.exists(f"{dir_pass}/{namecap}_pass.txt")==True:
+                            print("Пароль Найден!")
+                            password=app.ReadFile(f"{dir_pass}/{namecap}_pass.txt")
+                            print(f"Пароль: {password} | {namecap}")
+                            break
+                        if os.path.exists(sessionfile)==False:
+                            cmd=f'aircrack-ng -w "{dir_dircts}/{dic}" -N {sessionfile} -l "{dir_pass}/{namecap}_pass.txt" "{filecap}"'
+                            os.system(cmd)
     if result=="5":
         panel.List_Passwords(dir_pass)
     if result=="6":
@@ -185,6 +183,15 @@ while True:
         else:
             print(f"CAP {cap_file} Не Загружен!")
         panel.List_Caps(dir_caps)
+    if result=="7":
+        cmd=f'aircrack-ng -R "{sessionfile}"'
+        os.system(cmd)
+    if result=="8":
+        if os.path.exists(sessionfile)==True:
+            os.remove(sessionfile)
+            print(f"Файл {sessionfile} Сессии Удален!")
+        else:
+            print(f"Файл {sessionfile} Нету!")
     elif result!="1" and result!="2" and result!="3" and result!="4" and result!="5" and result!="6":
         print(f"Не Верная {result} Команда!")
     app.Pause()
