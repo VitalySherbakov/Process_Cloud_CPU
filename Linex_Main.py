@@ -178,13 +178,13 @@ while True:
         panel.List_Passwords(dir_pass)
     if result=="6":
         panel.List_Caps(dir_caps)
-        cap_file = app.InputWhile("CAP файл: ")
+        cap_file = app.InputWhile("Только Имя CAP файл: ")
         cap_url = app.InputWhile("Ссылка CAP: ")
-        result_cap=app.DownloadFile(cap_url, f"{dir_caps}/{cap_file}")
+        result_cap=app.DownloadFile(cap_url, f"{dir_caps}/{cap_file}.cap")
         if result_cap:
-            print(f"CAP {cap_file} Загружен!")
+            print(f"CAP {cap_file}.cap Загружен!")
         else:
-            print(f"CAP {cap_file} Не Загружен!")
+            print(f"CAP {cap_file}.cap Не Загружен!")
         panel.List_Caps(dir_caps)
     if result=="7":
         cmd=f'aircrack-ng -R "{sessionfile}"'
