@@ -42,12 +42,12 @@ while True:
     print(f"-------------------------{current_date_str}--------------------------")
     print(f"1) Список Словарей для Загрузки")
     print(f"2) Список Словарей Уже Загруженых")
-    print(f"3) Работа с Словарями")
-    print(f"4) Работа с CAP файлами Расшыфровка")
-    print(f"5) Список Паролей CAP файлов")
-    print(f"6) Скачать CAP Файл по Ссылке")
-    print(f"7) Использовать Сессию до Расшыфровки")
-    print(f"8) Удалить Сессию до Расшыфровки")
+    print(f"3) Скачать Словари")
+    print(f"4) Скачать CAP Файл по Ссылке")
+    print(f"5) Запуск Расшыфровки CAP")
+    print(f"6) Использовать Сессию до Расшыфровки")
+    print(f"7) Удалить Сессию до Расшыфровки")
+    print(f"8) Список Паролей CAP файлов")
     result = app.InputWhile("Номер Выбора: ")
     if result=="1":
         panel.List_Dicts(Dict_Download)
@@ -142,7 +142,7 @@ while True:
                 print("Папка Словарями Очищена!")
             else:
                 print(f"Нету Папки {dir_dircts} Словарей!")
-    if result=="4":
+    if result=="5":
         listcaps=panel.List_Caps(dir_caps)
         select_cap = app.InputWhile("Выбери файл CAP: ")
         if len(listcaps)>-1:
@@ -174,9 +174,9 @@ while True:
                 password=app.ReadFile(f"{dir_pass}/{namecap}_pass.txt")
                 print(f"Пароль: {password} | Файл {namecap}_pass.txt")
                 break
-    if result=="5":
+    if result=="8":
         panel.List_Passwords(dir_pass)
-    if result=="6":
+    if result=="4":
         panel.List_Caps(dir_caps)
         cap_file = app.InputWhile("Только Имя CAP файл: ")
         cap_url = app.InputWhile("Ссылка CAP: ")
@@ -186,15 +186,15 @@ while True:
         else:
             print(f"CAP {cap_file}.cap Не Загружен!")
         panel.List_Caps(dir_caps)
-    if result=="7":
-        cmd=f'aircrack-ng -R "{sessionfile}"'
+    if result=="6":
+        cmd=f'aircrack-ng -R "{dir_path}/{sessionfile}"'
         os.system(cmd)
-    if result=="8":
-        if os.path.exists(sessionfile)==True:
-            os.remove(sessionfile)
-            print(f"Файл {sessionfile} Сессии Удален!")
+    if result=="7":
+        if os.path.exists(f"{dir_path}/{sessionfile}")==True:
+            os.remove(f"{dir_path}/{sessionfile}")
+            print(f"Файл {f"{dir_path}/{sessionfile}"} Сессии Удален!")
         else:
-            print(f"Файл {sessionfile} Нету!")
-    elif result!="1" and result!="2" and result!="3" and result!="4" and result!="5" and result!="6":
+            print(f"Файл {f"{dir_path}/{sessionfile}"} Нету!")
+    elif result!="1" and result!="2" and result!="3" and result!="4" and result!="5" and result!="6" and result!="7" and result!="8":
         print(f"Не Верная {result} Команда!")
     app.Pause()
