@@ -1,5 +1,6 @@
 ----------------Для Linex---------------
 Скачать Программу
+apt install git -y
 git clone https://github.com/VitalySherbakov/Process_Cloud_CPU
 
 Запуск Скрипта
