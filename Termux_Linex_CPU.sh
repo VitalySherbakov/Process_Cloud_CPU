@@ -21,13 +21,15 @@ function function_install_cpu(){
 }
 function function_python(){
     apt update -y
-    apt install -y build-essential
-    DEBIAN_FRONTEND=noninteractive apt install -y tzdata
-    apt install -y software-properties-common
-    add-apt-repository -y ppa:deadsnakes/ppa
+    apt install -y build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev wget
+    wget https://www.python.org/ftp/python/3.10.0/Python-3.10.0.tgz
+    tar -xf Python-3.10.0.tgz
+    cd Python-3.10.0
+    ./configure --enable-optimizations --prefix=/usr/local
+    make -j $(nproc)
+    make altinstall
     apt update -y
-    apt install -y python3.8 python3-pip
-    python3.8 --version
+    /usr/local/bin/python3.10 --version
 }
 function function_pack(){
     # Установка Пакетов
