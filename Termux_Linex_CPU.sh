@@ -70,23 +70,31 @@ function function_pack2(){
 	apt install unrar-free -y
     apt update -y
     echo "Загрузка Пакетов 2..."
+    apt install -y zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev wget
     apt install -y build-essential
-    apt install -y software-properties-common
-    add-apt-repository -y ppa:deadsnakes/ppa
-    apt update -y
-    apt install -y python3.10 python3-pip
-    echo "Загрузка Пакетов 3..."
-    python3.10 --version
-    curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
-    python3.10 get-pip.py
-    chmod -R 777 ./get-pip.py
-    rm -r get-pip.py
-    pip install --upgrade pip
-    python3.10 -m pip install requests
-    python3.10 -m pip install alive-progress
-    python3.10 -m pip install tqdm
-    python3.10 -m pip install py7zr
-    python3.10 -m pip install rarfile
+    wget https://www.python.org/ftp/python/3.10.0/Python-3.10.0.tgz
+    tar -xf Python-3.10.0.tgz
+    cd Python-3.10.0
+    ./configure --enable-optimizations --prefix=/usr/local
+    make -j $(nproc)
+    make altinstall
+    /usr/local/bin/python3.10 --version
+    #apt install -y software-properties-common
+    #add-apt-repository -y ppa:deadsnakes/ppa
+    # apt update -y
+    # apt install -y python3.10 python3-pip
+    # echo "Загрузка Пакетов 3..."
+    # python3.10 --version
+    # curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+    # python3.10 get-pip.py
+    # chmod -R 777 ./get-pip.py
+    # rm -r get-pip.py
+    # pip install --upgrade pip
+    # python3.10 -m pip install requests
+    # python3.10 -m pip install alive-progress
+    # python3.10 -m pip install tqdm
+    # python3.10 -m pip install py7zr
+    # python3.10 -m pip install rarfile
     echo "-----Конец Установки Пакетов-----"
 }
 function access_ubuntu(){
