@@ -149,8 +149,8 @@ while True:
             int_cap = int(select_cap)
             int_cap=int_cap-1
             filecap=listcaps[int_cap]
-            namecap=filecap
-            namecap=os.path.splitext(namecap)[0] #Только Имя Файла
+            namecapfile=filecap
+            namecap=os.path.splitext(namecapfile)[0] #Только Имя Файла
             if os.path.exists(f"{dir_pass}/{namecap}_pass.txt")==False:
                 filecap=f"{dir_caps}/{filecap}"
                 listing_dicts=panel.List_Dicts_Exists(Dict_Download,dir_dircts)
@@ -166,16 +166,13 @@ while True:
                         print(f"Список Файлов: {files_dicts}")
                         for dic in files_dicts:
                             #if os.path.exists(sessionfile)==False:
-                            #cmd=f'aircrack-ng -w "{dir_dircts}/{dic}" -N {sessionfile} -l "{dir_pass}/{namecap}_pass.txt" "{filecap}"'
-                            cmd=f'aircrack-ng -w "{dir_dircts}/{dic}" -l "{dir_pass}/{namecap}_pass.txt" "{filecap}"'
-                            #print(cmd)
-                            #app.PauseProcess()
+                            cmd=f'aircrack-ng -w "{dir_dircts}/{dic}" -N "{dir_path}/{sessionfile}" -l "{dir_pass}/{namecap}_pass.txt" "{filecap}"'
+                            #cmd=f'aircrack-ng -w "{dir_dircts}/{dic}" -l "{dir_pass}/{namecap}_pass.txt" "{filecap}"'
                             os.system(cmd)
-                            #app.PauseProcess()
             if os.path.exists(f"{dir_pass}/{namecap}_pass.txt")==True:
                 print("Пароль Найден!")
                 password=app.ReadFile(f"{dir_pass}/{namecap}_pass.txt")
-                print(f"Пароль: {password} | Файл {namecap}")
+                print(f"Пароль: {password} | Файл {namecap}_pass.txt")
                 break
     if result=="5":
         panel.List_Passwords(dir_pass)
