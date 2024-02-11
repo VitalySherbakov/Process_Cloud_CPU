@@ -60,14 +60,14 @@ function function_pack2(){
     apt update -y
     echo "Загрузка Пакетов 1..."
     apt install sudo -y
-    sudo apt install ssh -y
-    sudo apt install curl -y
-    sudo apt install wget -y
-    sudo apt install git -y
-    sudo apt install rar -y
-    sudo apt install zip -y
-    sudo apt install p7zip-full -y
-	sudo apt install unrar-free -y
+    apt install ssh -y
+    apt install curl -y
+    apt install wget -y
+    apt install git -y
+    apt install rar -y
+    apt install zip -y
+    apt install p7zip-full -y
+	apt install unrar-free -y
     apt update -y
     echo "Загрузка Пакетов 2..."
     apt install -y build-essential
@@ -78,7 +78,8 @@ function function_pack2(){
     echo "Загрузка Пакетов 3..."
     python3.10 --version
     curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
-    sudo python3.10 get-pip.py
+    python3.10 get-pip.py
+    chmod -R 777 ./get-pip.py
     rm -r get-pip.py
     pip install --upgrade pip
     python3.10 -m pip install requests
