@@ -45,6 +45,7 @@ while True:
     print(f"3) Работа с Словарями")
     print(f"4) Работа с CAP файлами Расшыфровка")
     print(f"5) Список Паролей CAP файлов")
+    print(f"6) Скачать CAP Файл по Ссылке")
     result = app.InputWhile("Номер Выбора: ")
     if result=="1":
         panel.List_Dicts(Dict_Download)
@@ -172,6 +173,16 @@ while True:
                             os.system(cmd)
     if result=="5":
         panel.List_Passwords(dir_pass)
-    elif result!="1" and result!="2" and result!="3" and result!="4" and result!="5":
+    if result=="6":
+        panel.List_Caps(dir_caps)
+        cap_file = app.InputWhile("CAP файл: ")
+        cap_url = app.InputWhile("Ссылка CAP: ")
+        result_cap=app.DownloadFile(cap_url, f"{dir_caps}/{cap_file}")
+        if result_cap:
+            print(f"CAP {cap_file} Загружен!")
+        else:
+            print(f"CAP {cap_file} Не Загружен!")
+        panel.List_Caps(dir_caps)
+    elif result!="1" and result!="2" and result!="3" and result!="4" and result!="5" and result!="6":
         print(f"Не Верная {result} Команда!")
     app.Pause()
