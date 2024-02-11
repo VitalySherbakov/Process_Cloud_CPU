@@ -6,7 +6,7 @@ git clone https://github.com/VitalySherbakov/Process_Cloud_CPU
 bash ./Process_Cloud_CPU/Termux_Linex_CPU.sh
 
 Удалить Программу
-chmod -R 777 Process_Cloud_CPU && rm -r Process_Cloud_CPU
+rm -r Process_Cloud_CPU
 
 ----------------Для Смартфона--------------
 Ссылка на Загрузку Termux
