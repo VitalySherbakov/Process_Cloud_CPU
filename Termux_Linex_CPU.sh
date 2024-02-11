@@ -1,7 +1,7 @@
 versionscript=1.012
 echo "Установка и Работа Process_Cloud CPU SV (Щ.В) (v $versionscript)"
-distributivelinex=$(lsb_release -is)
-numberversionlinex=$(lsb_release -rs)
+distributivelinex=$(uname -a)
+numberversionlinex=$(uname -a)
 dirsource="Process_Cloud_CPU"
 
 # ----------------------Functions----------------------
