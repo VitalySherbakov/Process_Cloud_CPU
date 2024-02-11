@@ -151,5 +151,13 @@
             "7Z": "https://drive.google.com/uc?export=download&confirm=no_antivirus&id=1MH5NtufxvM2pwJPdH_CcNxSrjdUbumL-",
             "ZIP": "", 
             "RAR": ""}
+    },
+    {
+        "Name": "Testing",
+        "Files": ["Testing1.txt", "Testing2.txt"],
+        "Urls": {
+            "7Z": "https://drive.google.com/uc?export=download&confirm=no_antivirus&id=1mSPyK--Ub6NIb_k5nZcB2uFYtEEJqd70",
+            "ZIP": "", 
+            "RAR": ""}
     }
 ]
