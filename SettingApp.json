@@ -1,5 +1,6 @@
 {
     "Version": 1.003,
+    "Windows_AircrackNg": "aircrack-ng-1.7-win\\bin\\aircrack-ng.exe",
     "Dir_CAPS": "WIFICAPS",
     "Dir_Dicts_Downloads": "DownloadDicts",
     "Dir_Dicts": "Dicts",

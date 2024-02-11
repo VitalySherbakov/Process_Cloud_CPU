@@ -84,21 +84,24 @@ while True:
                                             dit_dicts_ext = Settings['Dir_Dicts']
                                             with py7zr.SevenZipFile(f"{path_download}", mode='r') as archive:
                                                 archive.extractall(f"{dir_path}/{dit_dicts_ext}")
-                                                os.remove(path_download)
                                                 print(f"Словарь {sel_dic['Name']} Загружен!")
+                                            if os.path.exists(path_download)==True:
+                                                os.remove(path_download)   
                                         if dict_arhivator[arhivator]=="ZIP":
                                             dit_dicts_ext = Settings['Dir_Dicts']
                                             command = f'"zip" "{path_download}" -d "{dir_path}/{dit_dicts_ext}"'
                                             os.system(command)
                                             #print(command)
-                                            os.remove(path_download)
+                                            if os.path.exists(path_download)==True:
+                                                os.remove(path_download)
                                             print(f"Словарь {sel_dic['Name']} Загружен!")
                                         if dict_arhivator[arhivator]=="RAR":
                                             dit_dicts_ext = Settings['Dir_Dicts']
                                             command = f'"rar" x "{path_download}" -o "{dir_path}/{dit_dicts_ext}"'
                                             os.system(command)
                                             #print(command)
-                                            os.remove(path_download)
+                                            if os.path.exists(path_download)==True:
+                                                os.remove(path_download)
                                             print(f"Словарь {sel_dic['Name']} Загружен!")
                                 else:
                                     print(f"Нету Ссылки на {sel_dic['Name']} Словарь")
@@ -112,21 +115,24 @@ while True:
                                             dit_dicts_ext = Settings['Dir_Dicts']
                                             with py7zr.SevenZipFile(f"{path_download}", mode='r') as archive:
                                                 archive.extractall(f"{dir_path}/{dit_dicts_ext}")
-                                                os.remove(path_download)
                                                 print(f"Словарь {sel_dic['Name']} Загружен!")
+                                            if os.path.exists(path_download)==True:
+                                                os.remove(path_download)
                                         if dict_arhivator[arhivator]=="ZIP":
                                             dit_dicts_ext = Settings['Dir_Dicts']
                                             command = f'"zip" "{path_download}" -d "{dir_path}/{dit_dicts_ext}"'
                                             os.system(command)
                                             #print(command)
-                                            os.remove(path_download)
+                                            if os.path.exists(path_download)==True:
+                                                os.remove(path_download)
                                             print(f"Словарь {sel_dic['Name']} Загружен!")
                                         if dict_arhivator[arhivator]=="RAR":
                                             dit_dicts_ext = Settings['Dir_Dicts']
                                             command = f'"rar" x "{path_download}" -o "{dir_path}/{dit_dicts_ext}"'
                                             os.system(command)
                                             #print(command)
-                                            os.remove(path_download)
+                                            if os.path.exists(path_download)==True:
+                                                os.remove(path_download)
                                             print(f"Словарь {sel_dic['Name']} Загружен!")
                                 else:
                                     print(f"Нету Ссылки на {sel_dic['Name']} Словарь")

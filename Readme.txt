@@ -10,6 +10,7 @@ rm -r Process_Cloud_CPU
 ---------------------Описание----------------------
 {
     "Version": 1.003,
+    "Windows_AircrackNg": "aircrack-ng-1.7-win\\bin\\aircrack-ng.exe",
     "Dir_CAPS": "WIFICAPS",
     "Dir_Dicts_Downloads": "DownloadDicts",
     "Dir_Dicts": "Dicts",
@@ -19,6 +20,7 @@ rm -r Process_Cloud_CPU
     "Arhivator": "RAR"
 }
 
+Windows_AircrackNg - Программа AircrackNg только для Windows
 Dir_CAPS - Папка Файлов Caps для расшыфровки
 Dir_Dicts_Downloads - Файлы загрузки словарей
 Dir_Dicts - Уже готовые словари распакованые
