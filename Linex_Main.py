@@ -168,10 +168,10 @@ while True:
                             #if os.path.exists(sessionfile)==False:
                             #cmd=f'aircrack-ng -w "{dir_dircts}/{dic}" -N {sessionfile} -l "{dir_pass}/{namecap}_pass.txt" "{filecap}"'
                             cmd=f'aircrack-ng -w "{dir_dircts}/{dic}" -l "{dir_pass}/{namecap}_pass.txt" "{filecap}"'
-                            print(cmd)
-                            app.PauseProcess()
+                            #print(cmd)
+                            #app.PauseProcess()
                             os.system(cmd)
-                            app.PauseProcess()
+                            #app.PauseProcess()
             if os.path.exists(f"{dir_pass}/{namecap}_pass.txt")==True:
                 print("Пароль Найден!")
                 password=app.ReadFile(f"{dir_pass}/{namecap}_pass.txt")
