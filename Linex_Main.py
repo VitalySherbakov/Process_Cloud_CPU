@@ -164,11 +164,6 @@ while True:
                     print(f"Выбран Словарь: {sel_dic_name}")
                     print(f"Список Файлов: {files_dicts}")
                     for dic in files_dicts:
-                        if os.path.exists(f"{dir_pass}/{namecap}_pass.txt")==True:
-                            print("Пароль Найден!")
-                            password=app.ReadFile(f"{dir_pass}/{namecap}_pass.txt")
-                            print(f"Пароль: {password} | {namecap}")
-                            break
                         #if os.path.exists(sessionfile)==False:
                         #cmd=f'aircrack-ng -w "{dir_dircts}/{dic}" -N {sessionfile} -l "{dir_pass}/{namecap}_pass.txt" "{filecap}"'
                         cmd=f'aircrack-ng -w "{dir_dircts}/{dic}" -l "{dir_pass}/{namecap}_pass.txt" "{filecap}"'
@@ -176,6 +171,11 @@ while True:
                         app.PauseProcess()
                         os.system(cmd)
                         app.PauseProcess()
+            if os.path.exists(f"{dir_pass}/{namecap}_pass.txt")==True:
+                print("Пароль Найден!")
+                password=app.ReadFile(f"{dir_pass}/{namecap}_pass.txt")
+                print(f"Пароль: {password} | {namecap}")
+                break
     if result=="5":
         panel.List_Passwords(dir_pass)
     if result=="6":
