@@ -171,6 +171,7 @@ while True:
                         #if os.path.exists(sessionfile)==False:
                         cmd=f'aircrack-ng -w "{dir_dircts}/{dic}" -N {sessionfile} -l "{dir_pass}/{namecap}_pass.txt" "{filecap}"'
                         os.system(cmd)
+                        app.PauseProcess()
     if result=="5":
         panel.List_Passwords(dir_pass)
     if result=="6":
