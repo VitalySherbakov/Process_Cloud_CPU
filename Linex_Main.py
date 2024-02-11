@@ -150,6 +150,7 @@ while True:
             int_cap=int_cap-1
             filecap=listcaps[int_cap]
             namecap=filecap
+            namecap=os.path.splitext(namecap)[0] #Только Имя Файла
             filecap=f"{dir_caps}/{filecap}"
             listing_dicts=panel.List_Dicts_Exists(Dict_Download,dir_dircts)
             select_dicts = app.InputWhile("Выбери Словари: ")
