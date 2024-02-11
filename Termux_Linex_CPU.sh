@@ -96,5 +96,9 @@ do
         access_ubuntu
         main "$distributivelinex"
     fi
+    if [ "$distributivelinex" == "Linex" ]; then
+        access_ubuntu
+        main "$distributivelinex"
+    fi
     read -p "Нажмите Enter, чтобы продолжить"
 done
