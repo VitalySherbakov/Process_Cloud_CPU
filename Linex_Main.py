@@ -149,28 +149,30 @@ while True:
             filecap=listcaps[int_cap]
             namecap=filecap
             filecap=f"{dir_caps}/{filecap}"
-            panel.List_Dicts_Exists(Dict_Download,dir_dircts)
+            listing_dicts=panel.List_Dicts_Exists(Dict_Download,dir_dircts)
             select_dicts = app.InputWhile("Выбери Словари: ")
             mass_dicts = select_dicts.split(",")
             for down in mass_dicts:
                 num_dic = int(down)
                 num_dic = num_dic-1
-                if len(Dict_Download)>-1:
-                    sel_dic = Dict_Download[num_dic]
-                    print(f"Выбран Словарь: {sel_dic['Name']}")
-                    print(f"Список Файлов: {sel_dic['Files']}")
-                    for dic in sel_dic['Files']:
-                        if os.path.exists(f"{dir_pass}/{namecap}_pass.txt")==True:
-                            print("Пароль Найден!")
-                            password=app.ReadFile(f"{dir_pass}/{namecap}_pass.txt")
-                            print(f"Пароль: {password} | {namecap}")
-                            break
-                        if os.path.exists(sessionfile)==False:
-                            cmd=f'aircrack-ng -w "{dir_dircts}/{dic}" -N {sessionfile} -l "{dir_pass}/{namecap}_pass.txt" "{filecap}"'
-                            os.system(cmd)
-                        else:
-                            cmd=f'aircrack-ng -R "{sessionfile}"'
-                            os.system(cmd)
+                if len(listing_dicts)>-1:
+                    sel_dic_name = listing_dicts[num_dic]
+                    print(sel_dic_name)
+                    print(Dict_Download)
+                    # print(f"Выбран Словарь: {sel_dic['Name']}")
+                    # print(f"Список Файлов: {sel_dic['Files']}")
+                    # for dic in sel_dic['Files']:
+                    #     if os.path.exists(f"{dir_pass}/{namecap}_pass.txt")==True:
+                    #         print("Пароль Найден!")
+                    #         password=app.ReadFile(f"{dir_pass}/{namecap}_pass.txt")
+                    #         print(f"Пароль: {password} | {namecap}")
+                    #         break
+                    #     if os.path.exists(sessionfile)==False:
+                    #         cmd=f'aircrack-ng -w "{dir_dircts}/{dic}" -N {sessionfile} -l "{dir_pass}/{namecap}_pass.txt" "{filecap}"'
+                    #         os.system(cmd)
+                        # else:
+                        #     cmd=f'aircrack-ng -R "{sessionfile}"'
+                        #     os.system(cmd)
     if result=="5":
         panel.List_Passwords(dir_pass)
     if result=="6":

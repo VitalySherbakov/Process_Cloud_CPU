@@ -143,7 +143,7 @@ class Process_Panel(object):
             print(f"{dict_num}) {name} | Количество Файлов: {len(files)}")
         dict_num = 0
         print("--------------------------------")
-    def List_Dicts_Exists(self, Dict_Download , dir_dircts):
+    def List_Dicts_Exists(self, Dict_Download , dir_dircts)->list:
         """Список Уже Загруженых"""
         listing_dict=[]
         if os.path.exists(dir_dircts)==True:
@@ -164,6 +164,7 @@ class Process_Panel(object):
             for names in listing_dict:
                 n+=1
                 print(f"{n}) Словарь {names}")
+        return listing_dict
     def List_Caps(self, dir_caps)->list:
         """Список CAP Файлов"""
         filesAll=[]
