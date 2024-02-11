@@ -177,4 +177,27 @@ class Process_Panel(object):
         else:
             print(f"Нету {dir_caps} Папки с CAP файлами!")
         return filesAll
+    def List_Passwords(self, dir_pass):
+        """Список CAP Файлов Паролей"""
+        if os.path.exists(dir_pass)==True:
+            filesAll = os.listdir(dir_pass)
+            print("------------Пароли CAP Файлы-------------")
+            for i,li in enumerate(filesAll):
+                i=i+1
+                password=self.ReadFile(f"{dir_pass}/{li}")
+                print(f"{i}) {password} | {li}")
+            print("--------------------------------")
+        else:
+            print(f"Нету {dir_pass} Папки с Паролями файлами!")
+    def ReadFile(self, file: str, encod="utf-8"):
+        """Чтение Файла"""
+        text=""
+        if os.path.exists(file):
+            try:
+                with open(file, 'r', encoding=encod) as f:
+                    text = f.read()
+            except Exception as ex:
+                print(f"ERROR FILE: {ex}!")
+        return text
+
 

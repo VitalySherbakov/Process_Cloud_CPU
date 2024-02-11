@@ -44,6 +44,7 @@ while True:
     print(f"2) Список Словарей Уже Загруженых")
     print(f"3) Работа с Словарями")
     print(f"4) Работа с CAP файлами Расшыфровка")
+    print(f"5) Список Паролей CAP файлов")
     result = app.InputWhile("Номер Выбора: ")
     if result=="1":
         panel.List_Dicts(Dict_Download)
@@ -166,6 +167,8 @@ while True:
                         if os.path.exists(sessionfile)==False:
                             cmd=f'aircrack-ng -w "{dir_dircts}/{dic}" -N {sessionfile} -l "{dir_pass}/{namecap}_pass.txt" "{filecap}"'
                             os.system(cmd)
-    elif result!="1" and result!="2" and result!="3" and result!="4":
+    if result=="5":
+        panel.List_Passwords(dir_pass)
+    elif result!="1" and result!="2" and result!="3" and result!="4" and result!="5":
         print(f"Не Верная {result} Команда!")
     app.Pause()
