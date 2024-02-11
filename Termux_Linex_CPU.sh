@@ -81,7 +81,8 @@ function main(){
         python3.8 "./$dirsource/Linex_Main.py" "$1"
 	fi
     if [ "$command" == "exit" ]; then
-		break
+		#break
+        exit
 	fi
 }
 
