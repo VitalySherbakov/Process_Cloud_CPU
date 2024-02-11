@@ -1,6 +1,6 @@
 import os, sys, time, re, json, datetime, random
 from Process_Cloud_CPU import Process_Cloud, Process_Panel
-import py7zr
+#import py7zr
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
 
@@ -82,9 +82,11 @@ while True:
                                     if result3==True:
                                         if dict_arhivator[arhivator]=="7Z":
                                             dit_dicts_ext = Settings['Dir_Dicts']
-                                            with py7zr.SevenZipFile(f"{path_download}", mode='r') as archive:
-                                                archive.extractall(f"{dir_path}/{dit_dicts_ext}")
-                                                print(f"Словарь {sel_dic['Name']} Загружен!")
+                                            #with py7zr.SevenZipFile(f"{path_download}", mode='r') as archive:
+                                                #archive.extractall(f"{dir_path}/{dit_dicts_ext}")
+                                            command = f'7z x "{path_download}" -o "{dir_path}/{dit_dicts_ext}"'
+                                            os.system(command)
+                                            print(f"Словарь {sel_dic['Name']} Загружен!")
                                             if os.path.exists(path_download)==True:
                                                 os.remove(path_download)   
                                         if dict_arhivator[arhivator]=="ZIP":
@@ -113,9 +115,11 @@ while True:
                                     if result3==True:
                                         if dict_arhivator[arhivator]=="7Z":
                                             dit_dicts_ext = Settings['Dir_Dicts']
-                                            with py7zr.SevenZipFile(f"{path_download}", mode='r') as archive:
-                                                archive.extractall(f"{dir_path}/{dit_dicts_ext}")
-                                                print(f"Словарь {sel_dic['Name']} Загружен!")
+                                            #with py7zr.SevenZipFile(f"{path_download}", mode='r') as archive:
+                                                #archive.extractall(f"{dir_path}/{dit_dicts_ext}")
+                                            command = f'7z x "{path_download}" -o "{dir_path}/{dit_dicts_ext}"'
+                                            os.system(command)
+                                            print(f"Словарь {sel_dic['Name']} Загружен!")
                                             if os.path.exists(path_download)==True:
                                                 os.remove(path_download)
                                         if dict_arhivator[arhivator]=="ZIP":

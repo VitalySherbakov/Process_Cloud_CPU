@@ -41,6 +41,7 @@ function function_python(){
 	python3.8 -m pip install alive-progress
 	python3.8 -m pip install tqdm
 	python3.8 -m pip install py7zr
+    python3.8 -m pip install pylzma
 	python3.8 -m pip install rarfile
     python3.8 -m pip install urllib3==1.26.7
 }
