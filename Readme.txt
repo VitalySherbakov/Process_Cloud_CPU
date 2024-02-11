@@ -1,3 +1,4 @@
+----------------Для Linex---------------
 Скачать Программу
 git clone https://github.com/VitalySherbakov/Process_Cloud_CPU
 
@@ -5,9 +6,10 @@ git clone https://github.com/VitalySherbakov/Process_Cloud_CPU
 bash ./Process_Cloud_CPU/Termux_Linex_CPU.sh
 
 Удалить Программу
-rm -r Process_Cloud_CPU
+chmod -R 777 Process_Cloud_CPU && rm -r Process_Cloud_CPU
 
----------------------Описание----------------------
+
+---------------------Описание Общее----------------------
 {
     "Version": 1.003,
     "Windows_AircrackNg": "aircrack-ng-1.7-win\\bin\\aircrack-ng.exe",
