@@ -28,7 +28,7 @@ proot-distro install ubuntu
 proot-distro login ubuntu
 
 Обновить Зарание
-apt update -y
+apt update -y && upgrade -y
 
 ---------------------Описание Общее----------------------
 {
