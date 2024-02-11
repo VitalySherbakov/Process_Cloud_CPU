@@ -84,7 +84,7 @@ while True:
                                             dit_dicts_ext = Settings['Dir_Dicts']
                                             #with py7zr.SevenZipFile(f"{path_download}", mode='r') as archive:
                                                 #archive.extractall(f"{dir_path}/{dit_dicts_ext}")
-                                            command = f'7z x "{path_download}" -o "{dir_path}/{dit_dicts_ext}"'
+                                            command = f'7z x "{path_download}" "{dir_path}/{dit_dicts_ext}"'
                                             os.system(command)
                                             print(f"Словарь {sel_dic['Name']} Загружен!")
                                             if os.path.exists(path_download)==True:
@@ -117,7 +117,7 @@ while True:
                                             dit_dicts_ext = Settings['Dir_Dicts']
                                             #with py7zr.SevenZipFile(f"{path_download}", mode='r') as archive:
                                                 #archive.extractall(f"{dir_path}/{dit_dicts_ext}")
-                                            command = f'7z x "{path_download}" -o "{dir_path}/{dit_dicts_ext}"'
+                                            command = f'7z x "{path_download}" "{dir_path}/{dit_dicts_ext}"'
                                             os.system(command)
                                             print(f"Словарь {sel_dic['Name']} Загружен!")
                                             if os.path.exists(path_download)==True:
