@@ -27,6 +27,9 @@ proot-distro install ubuntu
 Вход в Консоль Ubuntu
 proot-distro login ubuntu
 
+Обновить Зарание
+apt update -y
+
 ---------------------Описание Общее----------------------
 {
     "Version": 1.003,
