@@ -44,6 +44,8 @@ function function_python(){
     python3.8 -m pip install pylzma
 	python3.8 -m pip install rarfile
     python3.8 -m pip install urllib3==1.26.7
+    cd ..
+    rm -r Python-3.8.0
 }
 # function function_pack(){
 #     # Установка Пакетов
