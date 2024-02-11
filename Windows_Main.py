@@ -48,6 +48,7 @@ while True:
     print(f"6) Использовать Сессию до Расшыфровки")
     print(f"7) Удалить Сессию до Расшыфровки")
     print(f"8) Список Паролей CAP файлов")
+    print(f"9) Выход из Скрипта")
     result = app.InputWhile("Номер Выбора: ")
     if result=="1":
         panel.List_Dicts(Dict_Download)
@@ -195,6 +196,8 @@ while True:
             print(f"Файл {dir_path}\\{sessionfile} Сессии Удален!")
         else:
             print(f"Файл {dir_path}\\{sessionfile} Нету!")
-    elif result!="1" and result!="2" and result!="3" and result!="4" and result!="5" and result!="6" and result!="7" and result!="8":
+    if result=="9":
+        break
+    elif result!="1" and result!="2" and result!="3" and result!="4" and result!="5" and result!="6" and result!="7" and result!="8" and result!="9":
         print(f"Не Верная {result} Команда!")
     app.Pause()
