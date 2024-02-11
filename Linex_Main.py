@@ -64,7 +64,7 @@ while True:
                         sel_dic = Dict_Download[num_dic]
                         print(f"Выбран Словарь: {sel_dic['Name']}")
                         print(f"Список Файлов: {sel_dic['Files']}")
-                        app.PauseProcess()
+                        #app.PauseProcess()
                         select_url = Settings["Type_URLS"]
                         if select_arhivator in sel_dic["Urls"]:
                             if select_url=="GoogleDisk":
