@@ -19,6 +19,10 @@ function function_install_cpu(){
     apt install aircrack-ng -y
 	aircrack-ng --help
 	cd ..
+	echo "Авто Выход с Скрипта"
+	echo "Повторно Войдите в Скрипт Командой"
+	echo "bash ./Process_Cloud_CPU/Termux_Linex_CPU.sh"
+	exit
 }
 function function_python(){
     apt update -y
@@ -100,6 +104,10 @@ function function_pack2(){
     echo "Загрузка Пакетов 2..."
     function_python
     echo "-----Конец Установки Пакетов-----"
+	echo "Авто Выход с Скрипта"
+	echo "Повторно Войдите в Скрипт Командой"
+	echo "bash ./Process_Cloud_CPU/Termux_Linex_CPU.sh"
+	exit
 }
 function access_ubuntu(){
 	# Ubuntu полный доступ к папке
