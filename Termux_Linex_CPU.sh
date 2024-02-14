@@ -131,9 +131,13 @@ function main(){
     if [ "$command" == "remove" ]; then
         echo "Вы Уверены в Удалении Программы Y/N"
         read command2
-        if [ "$command2" == "y" || "$command2" == "Y" ]; then
+        if [ "$command2" == "y" ]; then
             access_ubuntu
-            break
+            auto_remove_program
+            exit
+        fi
+        if [ "$command2" == "Y" ]; then
+            access_ubuntu
             auto_remove_program
             exit
         fi
