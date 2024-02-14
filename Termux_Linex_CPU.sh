@@ -135,11 +135,13 @@ function main(){
             access_ubuntu
             auto_remove_program
             exit
+            echo "Программа $dirsource Удалена!"
         fi
         if [ "$command2" == "Y" ]; then
             access_ubuntu
             auto_remove_program
             exit
+            echo "Программа $dirsource Удалена!"
         fi
 	fi
     if [ "$command" == "pack" ]; then
