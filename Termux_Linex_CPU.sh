@@ -128,7 +128,7 @@ function main(){
     echo "Команда: exit (Выход)"
     echo "Введите Команду:"
     read command
-    if [ "$command" == "remove_program" ]; then
+    if [ "$command" == "remove" ]; then
         echo "Вы Уверены в Удалении Программы Y/N"
         read command2
         if [ "$command2" == "y" || "$command2" == "Y" ]; then
