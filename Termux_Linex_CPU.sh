@@ -131,6 +131,7 @@ function main(){
     if [ "$command" == "remove_program" ]; then
         access_ubuntu
 		auto_remove_program
+        exit
 	fi
     if [ "$command" == "pack" ]; then
         access_ubuntu
