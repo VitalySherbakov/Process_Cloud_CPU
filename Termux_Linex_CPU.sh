@@ -133,6 +133,7 @@ function main(){
         read command2
         if [ "$command2" == "y" || "$command2" == "Y" ]; then
             access_ubuntu
+            break
             auto_remove_program
             exit
         fi
