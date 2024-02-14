@@ -114,6 +114,9 @@ function access_ubuntu(){
 	nameuser=$USER
 	chmod -R 777 "$dirsource/"
 }
+function auto_remove_program(){
+    rm -rf "$dirsource"
+}
 # -----------------------------------------------------
 
 function main(){
@@ -121,9 +124,14 @@ function main(){
     echo "Команда: pack (Установка необходимых пакетов)"
     echo "Команда: cpu (Установка утелиты для всех Linex, кроме Kali)"
     echo "Команда: run (Запуск Скрипта)"
+    echo "Команда: remove_program (Авто Удаление Программы)"
     echo "Команда: exit (Выход)"
     echo "Введите Команду:"
     read command
+    if [ "$command" == "remove_program" ]; then
+        access_ubuntu
+		auto_remove_program
+	fi
     if [ "$command" == "pack" ]; then
         access_ubuntu
 		function_pack2
