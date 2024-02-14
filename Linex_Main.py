@@ -151,7 +151,9 @@ while True:
                 # Список Файлов
                 filesAll = os.listdir(dir_dircts)
                 for fi in filesAll:
-                    os.remove(fi)
+                    #os.remove(fi)
+                    print(fi)
+                    #os.system(f"rm -r {fi}")
                 print("Папка Словарями Очищена!")
             else:
                 print(f"Нету Папки {dir_dircts} Словарей!")
