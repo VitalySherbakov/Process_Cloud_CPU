@@ -129,7 +129,7 @@ function main(){
     echo "Введите Команду:"
     read command
     if [ "$command" == "remove_program" ]; then
-        echo "Команда Вы Уверены в Удалении Программы Y/N"
+        echo "Вы Уверены в Удалении Программы Y/N"
         read command2
         if [ "$command2" == "y" || "$command2" == "Y" ]; then
             access_ubuntu
