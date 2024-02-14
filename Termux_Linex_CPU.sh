@@ -124,14 +124,18 @@ function main(){
     echo "Команда: pack (Установка необходимых пакетов)"
     echo "Команда: cpu (Установка утелиты для всех Linex, кроме Kali)"
     echo "Команда: run (Запуск Скрипта)"
-    echo "Команда: remove_program (Авто Удаление Программы)"
+    echo "Команда: remove (Авто Удаление Программы)"
     echo "Команда: exit (Выход)"
     echo "Введите Команду:"
     read command
     if [ "$command" == "remove_program" ]; then
-        access_ubuntu
-		auto_remove_program
-        exit
+        echo "Команда Вы Уверены в Удалении Программы Y/N"
+        read command2
+        if [ "$command2" == "y" || "$command2" == "Y" ]; then
+            access_ubuntu
+            auto_remove_program
+            exit
+        fi
 	fi
     if [ "$command" == "pack" ]; then
         access_ubuntu
