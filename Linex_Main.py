@@ -147,16 +147,20 @@ while True:
             except Exception as ex:
                 print(f"Ошыбка: {ex}!")
         if result2=="2":
-            if os.path.exists(dir_dircts)==True:
-                # Список Файлов
-                filesAll = os.listdir(dir_dircts)
-                for fi in filesAll:
-                    #os.remove(fi)
-                    print(fi)
-                    #os.system(f"rm -r {fi}")
-                print("Папка Словарями Очищена!")
+            result_clear=app.InputWhile("Вы Уверены в Очистке Y/N: ")
+            if result_clear.lower()=="y":
+                if os.path.exists(dir_dircts)==True:
+                    # Список Файлов
+                    filesAll = os.listdir(dir_dircts)
+                    for fi in filesAll:
+                        # Проверка Существования такого файла чтоб потом его удалить
+                        if os.path.exists(f"{dir_dircts}/{fi}")==True:
+                            os.remove(f"{dir_dircts}/{fi}")
+                    print("Папка Словарями Очищена!")
+                else:
+                    print(f"Нету Папки {dir_dircts} Словарей!")
             else:
-                print(f"Нету Папки {dir_dircts} Словарей!")
+                print("Отмена в Очищении!")
     if result=="5":
         listcaps=panel.List_Caps(dir_caps)
         select_cap = app.InputWhile("Выбери файл CAP: ")
