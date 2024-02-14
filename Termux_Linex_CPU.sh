@@ -134,14 +134,14 @@ function main(){
         if [ "$command2" == "y" ]; then
             access_ubuntu
             auto_remove_program
-            exit
             echo "Программа $dirsource Удалена!"
+            exit
         fi
         if [ "$command2" == "Y" ]; then
             access_ubuntu
             auto_remove_program
-            exit
             echo "Программа $dirsource Удалена!"
+            exit
         fi
 	fi
     if [ "$command" == "pack" ]; then
