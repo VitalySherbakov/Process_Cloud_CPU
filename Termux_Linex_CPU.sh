@@ -92,6 +92,7 @@ function function_pack2(){
     apt update -y
     echo "Загрузка Пакетов 1..."
     apt install sudo -y
+    apt install tar -y
     apt install ssh -y
     apt install curl -y
     apt install wget -y

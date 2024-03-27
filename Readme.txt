@@ -61,7 +61,7 @@ apt update -y && upgrade -y
     "Passwords": "Passs",
     "FileDicts":"DictsDownload.json",
     "Type_URLS": "GoogleDisk",
-    "Arhivator": "RAR"
+    "Arhivator": "tar"
 }
 
 Windows_AircrackNg - Программа AircrackNg только для Windows
