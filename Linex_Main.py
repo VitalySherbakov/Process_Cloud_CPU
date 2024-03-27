@@ -13,7 +13,7 @@ print(f"---------------------------------------------------")
 print(f"Платформа: {platform_name}")
 print(f"Папка: {dir_path}")
 
-dict_arhivator={"7z": "7Z", "zip": "ZIP", "rar": "RAR"}
+dict_arhivator={"7z": "7Z", "zip": "ZIP", "tar": "TAR", "rar": "RAR"}
 # Переменные
 sessionfile="home.session"
 # Процес
@@ -90,6 +90,16 @@ while True:
                                             print(f"Словарь {sel_dic['Name']} Загружен!")
                                             if os.path.exists(path_download)==True:
                                                 os.remove(path_download)   
+                                        if dict_arhivator[arhivator]=="TAR":
+                                            dit_dicts_ext = Settings['Dir_Dicts']
+                                            #with py7zr.SevenZipFile(f"{path_download}", mode='r') as archive:
+                                                #archive.extractall(f"{dir_path}/{dit_dicts_ext}")
+                                            command = f'tar -xvzf "{path_download}" -C "{dir_path}/{dit_dicts_ext}"'
+                                            print(command)
+                                            os.system(command)
+                                            print(f"Словарь {sel_dic['Name']} Загружен!")
+                                            if os.path.exists(path_download)==True:
+                                                os.remove(path_download)   
                                         if dict_arhivator[arhivator]=="ZIP":
                                             dit_dicts_ext = Settings['Dir_Dicts']
                                             command = f'"zip" "{path_download}" -d "{dir_path}/{dit_dicts_ext}"'
@@ -119,6 +129,16 @@ while True:
                                             #with py7zr.SevenZipFile(f"{path_download}", mode='r') as archive:
                                                 #archive.extractall(f"{dir_path}/{dit_dicts_ext}")
                                             command = f'7z x "{path_download}" -o{dir_path}/{dit_dicts_ext}'
+                                            print(command)
+                                            os.system(command)
+                                            print(f"Словарь {sel_dic['Name']} Загружен!")
+                                            if os.path.exists(path_download)==True:
+                                                os.remove(path_download)
+                                        if dict_arhivator[arhivator]=="TAR":
+                                            dit_dicts_ext = Settings['Dir_Dicts']
+                                            #with py7zr.SevenZipFile(f"{path_download}", mode='r') as archive:
+                                                #archive.extractall(f"{dir_path}/{dit_dicts_ext}")
+                                            command = f'tar -xvzf "{path_download}" -C "{dir_path}/{dit_dicts_ext}"'
                                             print(command)
                                             os.system(command)
                                             print(f"Словарь {sel_dic['Name']} Загружен!")
